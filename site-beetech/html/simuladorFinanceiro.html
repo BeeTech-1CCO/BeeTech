@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="SimuladorFinanceiro">
+    <!-- Inicio Simulador Financeiro -->
+        <div class="containerSimulador">
+            <div class="item">
+                <h1>Simule aqui seu faturamento</h1>
+                <p>Qual o total de apiários?</p>
+                <input type="text" id="iptTotalApiarios">
+                <p>Vai instalar em quantos apiários?</p>
+                <input type="text" id="iptInstalacao">
+                <p>Qual o seu faturamento mensal?</p>
+                <input type="text" id="iptValorProducao">
+                <br><br>
+                <div class="itembutton">
+                    <button onclick="calcular()">Calcular</button>
+                </div>
+                
+                
+            </div>
+        </div>
+    <!-- Final Simulador financeiro -->
+
+    <!-- Inicio Resultado -->
+        <div class="mensagemSimulador">
+            <div class="containerMensagem">
+                 <div class="item">
+                        <h1>Resultados:</h1>
+                        <div id="divMensagem"></div>    
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Final Resultado -->
+                    
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+        var axTotalApiarios = Number(iptTotalApiarios.value);
+        var axInstalacao = Number(iptInstalacao.value);
+        var axValorProducao = Number(iptValorProducao.value);
+        var axConta = (axInstalacao * axValorProducao) / axTotalApiarios;
+        var axContaFinal = (axConta * 0.5) + axConta;
+        var axCalculo = axValorProducao * 0.5;
+        var axCalculoFinal = axValorProducao + axCalculo;
+        var validacao = true;
+
+        if (axTotalApiarios == '') {
+            alert ('O campo "Qual o total de apiários?" tem que estar preenchido');
+            validacao = false;
+        }
+        
+        if (axInstalacao == '') {
+            alert ('O campo "Vai instalar em quantos apiários?" tem que estar preenchido');
+            validacao = false; 
+        }
+        if (axInstalacao > axTotalApiarios) {
+            alert ('Valor de instalções maior que seu total de apiários')
+            validacao = false;
+        }
+
+        if (axValorProducao == '') {
+            alert ('O campo "Qual o seu faturamento mensal?" tem que estar preenchido');
+            validacao = false; 
+        }
+
+
+        if (validacao == true) {
+            if (axTotalApiarios == axInstalacao) {
+                divMensagem.innerHTML = `<h2>Valor de produção de ${axInstalacao} apaiarios</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento pode chegar em: <b>R$${axContaFinal}</b><span></li></ul>`
+            } else {
+                divMensagem.innerHTML = `<h2>Valor de produção de ${axInstalacao} apaiarios</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento pode chegar em: <b>R$${axContaFinal}</b><span></li></ul><br>
+         <h2>Valor de produção de todos os apiarios junto:</h2><br>
+         <ul><li><span>Valor atual: <b>R$${axValorProducao}</b></span></li><br>
+          <li><span>Com nosso monitoramento pode chegar em: <b>R$${axCalculoFinal}</b><span></li></ul>.`
+            }
+            
+        } 
+
+    }
+
+</script>
