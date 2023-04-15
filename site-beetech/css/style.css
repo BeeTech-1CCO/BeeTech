@@ -72,8 +72,14 @@ body{
     color: #F0BF3A;
     margin-bottom: 45px;
     text-shadow: 2px 0 #21292A, -2px 0 #21292A, 0 2px #21292A, 0 -2px #21292A,
-    1px 1px #21292A, -1px -1px #21292A, 1px -1px #21292A, -1px 1px #21292A;
+    1px 1px #21292A, -1px -1px #21292A, 1px -1px #21292A, -1px 1px #21292A; 
 }
+
+/* 
+.footer .logo span{ 
+    color: #21292A;
+    margin: 0;
+} */
 
 .footer p {
     margin: 7px;
