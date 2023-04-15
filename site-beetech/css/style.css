@@ -98,3 +98,70 @@ body{
     color: #000000;
     margin: 7px;
 }
+
+/* Início do Banner1 */
+.banner1 {
+    background-image: url("../img/apicultura.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 820px;
+    background-position: 100%;
+    border-bottom: #000000 solid 2px;
+}
+
+.banner1 .container {
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.banner1 p {
+    text-align: center;
+    font-size: 65px;
+    color: #ECEBF3;
+    font-weight: bold;
+    width: 30%;
+}
+/* Final do Banner1 */
+
+/* Início do Banner2 */
+.banner2 {
+    background-color: #21292A;
+    height: 820px;
+}
+
+.banner2 .container {
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.banner2 .texto {
+    width: 20%;
+}
+
+.banner2 .logo {
+    background-color: #ECEBF3;
+    border-radius: 80px;
+}
+
+.banner2 h1 {
+    color: #F0BF3A;
+    font-size: 50px;
+    width: 110%;
+}
+
+.banner2 p {
+    font-size: 45px;
+    text-align: center;
+    width: 125%;
+    color: #ECEBF3;
+}
+
+.banner2 .container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Final do Banner2 */
