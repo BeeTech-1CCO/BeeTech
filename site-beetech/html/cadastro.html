@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - BeeTech</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+<!-- Header -->
+    <div class="header">
+        <div class="container">
+            <img src="Imagens/BeeTech.png" alt="Logo BeeTech" width="70px">
+
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li class="login"><button onclick="location.href = 'login.html'">LOGIN</button></li>
+                <li class="cadastro"><button onclick = "location.href = 'cadastro.html'">CADASTRAR</button></li>
+            </ul>
+
+
+        </div>
+    </div>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="container2">
+            <h1>REGISTRO DE CONTA!</h1>
+            <br>
+            <h2>Nome da empresa:</h2>
+            <input id="ipt_nome_empresa">
+            <br> <br>
+            <h2>Senha:</h2>
+            <input id="ipt_senha">
+            <button onclick="entrar()">ENTRAR</button>
+            <br>
+            <div id="div_msg" style="display: flex; justify-content: center;"></div>
+        </div>
+    </div>
+<!-- Footer -->
+
+</body>
+
+</html>
+
+<script>
+function entrar() {
+if(ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
+    div_msg.innerHTML = "Cadastro realizado com sucesso"
+    div_msg.style.color = "green"
+}
+else {
+    div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
+    div_msg.style.color = "red"
+}
+}
+
+
+
+</script>
