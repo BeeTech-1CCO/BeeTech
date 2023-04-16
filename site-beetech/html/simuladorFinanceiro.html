@@ -7,11 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="../css/styleSimuladorFinanceiro.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
+        <!--Início do Header-->
+        <div class="header">
+            <div class="container">
+                <img src="../img/logo.png" alt=""></img>
+                <ul class="navBar">
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="">SIMULADOR</a></li>
+                    <li><a href="login.html" class="bttLink">LOGIN</a></li>
+                    <li><a href="" class="bttLink">CADASTRO</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--Final do Header-->
+        
     <div class="SimuladorFinanceiro">
-    <!-- Inicio Simulador Financeiro -->
+        <!-- Inicio Simulador Financeiro -->
         <div class="containerSimulador">
             <div class="item">
                 <h1>Simule aqui seu faturamento</h1>
@@ -25,24 +40,59 @@
                 <div class="itembutton">
                     <button onclick="calcular()">Calcular</button>
                 </div>
-                
-                
+
+
             </div>
         </div>
-    <!-- Final Simulador financeiro -->
+        <!-- Final Simulador financeiro -->
 
-    <!-- Inicio Resultado -->
+        <!-- Inicio Resultado -->
         <div class="mensagemSimulador">
             <div class="containerMensagem">
-                 <div class="item">
-                        <h1>Resultados:</h1>
-                        <div id="divMensagem"></div>    
-                 </div>
+                <div class="item">
+                    <h1>Resultados:</h1>
+                    <div id="divMensagem"></div>
+                </div>
             </div>
         </div>
     </div>
     <!-- Final Resultado -->
-                    
+
+    <!-- Início Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="card">
+                <h1>BEETECH</h1>
+                <p id="top">Buscando inovação no </p>
+                <p>presente para um futuro</p>
+                <p>melhor</p>
+            </div>
+            <div class="card">
+                <h1>LINKS</h1>
+                <a href="">Home</a>
+                <a href="">Projeto</a>
+                <a href="">Simulador</a>
+                <a href="">Login</a>
+            </div>
+            <div class="card" id="contato">
+                <h1>CONTATO</h1>
+                <div id="house">
+                    <img src="../img/pet-house.png" alt="" id="imgHouse">
+                    <span>Endereço, número</span>
+                </div>
+                <div id="insta">
+                    <img src="../img/instagram.png" alt="" id="imgInsta">
+                    <span>@beetech_</span>
+                </div>
+                <div id="email">
+                    <img src="../img/o-email.png" alt="" id="imgEmail">
+                    <span>beetech@email.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Final Footer -->
+
 </body>
 
 </html>
@@ -60,22 +110,22 @@
         var validacao = true;
 
         if (axTotalApiarios == '') {
-            alert ('O campo "Qual o total de apiários?" tem que estar preenchido');
+            alert('O campo "Qual o total de apiários?" tem que estar preenchido');
             validacao = false;
         }
-        
+
         if (axInstalacao == '') {
-            alert ('O campo "Vai instalar em quantos apiários?" tem que estar preenchido');
-            validacao = false; 
+            alert('O campo "Vai instalar em quantos apiários?" tem que estar preenchido');
+            validacao = false;
         }
         if (axInstalacao > axTotalApiarios) {
-            alert ('Valor de instalções maior que seu total de apiários')
+            alert('Valor de instalções maior que seu total de apiários')
             validacao = false;
         }
 
         if (axValorProducao == '') {
-            alert ('O campo "Qual o seu faturamento mensal?" tem que estar preenchido');
-            validacao = false; 
+            alert('O campo "Qual o seu faturamento mensal?" tem que estar preenchido');
+            validacao = false;
         }
 
 
@@ -90,8 +140,8 @@
          <ul><li><span>Valor atual: <b>R$${axValorProducao}</b></span></li><br>
           <li><span>Com nosso monitoramento pode chegar em: <b>R$${axCalculoFinal}</b><span></li></ul>.`
             }
-            
-        } 
+
+        }
 
     }
 

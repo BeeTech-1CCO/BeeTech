@@ -26,6 +26,7 @@ body{
 .header{
     flex-direction: row;
     background-color: #ECEBF3;
+    border-bottom: #000000 solid 2px;
 }
 .header .container{
     align-items: center;
@@ -58,6 +59,13 @@ body{
     height: 280px;
 }
 
+#imgHouse, #imgInsta, #imgEmail {
+    width: 30px;
+    height: 30px;
+}
+
+
+
 .footer .container {
     justify-content: space-around;
 }
@@ -66,6 +74,12 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+#house, #email, #insta {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .footer .card h1 {

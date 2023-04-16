@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeTech</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/paginaUsuario.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Início Header Usuário-->
+    <div class="header">
+        <div class="container">
+            <img src="../img/logo.png" alt=""></img>
+            <ul class="navBar">
+                <li><a href="">Sensores</a></li>
+                <li><a href="">Perfil</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Final Header Usuário-->
+
+    <!--Início Dashboard-->
+    <div class="dashboard">
+        <div class="container">
+            <div id="alerts">
+                <canvas id="dashAvisos"></canvas>
+                <div>
+                    <h1>Alertas</h1>
+                    <p></p>
+                </div>
+            </div>
+            <div id="lineCharts">
+                <canvas id="dashTemp"></canvas>
+                <canvas id="dashUmid"></canvas>
+            </div>
+        </div>
+    </div>
+    <!--Final Dashboard-->
+</body>
+
+</html>
+
+<script>
+    const temperatura = document.getElementById(`dashTemp`)
+    const umidade = document.getElementById(`dashUmid`)
+    const avisos = document.getElementById(`dashAvisos`)
+
+    new Chart(temperatura, {
+        type: 'line',
+        data: {
+            labels: [`13:00`, `14:00`, `15:00`, `16:00`, `17:00`, `18:00`],
+            datasets: [{
+                label: 'Temperatura (°C)',
+                data: [33, 34, 33, 28, 25, 23],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(umidade, {
+        type: 'line',
+        data: {
+            labels: [`13:00`, `14:00`, `15:00`, `16:00`, `17:00`, `18:00`],
+            datasets: [{
+                label: 'Umidade (%)',
+                data: [44, 46, 51, 57, 60, 65],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(avisos, {
+        type: 'doughnut',
+        data: {
+            labels: [`Apiários no ideal`, `Apiários em risco`, `Apiários em nível crítico`],
+            datasets: [{
+                label: 'Quantidade de apiários',
+                data: [44, 13, 2],
+            }]
+        },
+        options: {
+        }
+    });
+</script>
