@@ -6,19 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - BeeTech</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>
-<!-- Header -->
+    <!-- Header -->
     <div class="header">
         <div class="container">
-            <img src="Imagens/BeeTech.png" alt="Logo BeeTech" width="70px">
+            <img src="../img/logo.png" alt="Logo BeeTech" width="70px">
 
-            <ul>
+            <ul class="navBar">
                 <li><a href="index.html">HOME</a></li>
-                <li class="login"><button onclick="location.href = 'login.html'">LOGIN</button></li>
-                <li class="cadastro"><button onclick = "location.href = 'cadastro.html'">CADASTRAR</button></li>
+                <li><a href="index.html#simulador">SIMULADOR</a></li>
+                <li><a href="login.html" class="bttLink">LOGIN</a></li>
+                <li><a href="cadastro.html" class="bttLink">CADASTRAR</a></li>
             </ul>
 
 
@@ -26,36 +28,73 @@
     </div>
     <!-- Banner -->
     <div class="banner">
-        <div class="container2">
-            <h1>REGISTRO DE CONTA!</h1>
-            <br>
+        <div class="container">
+            <h1>REGISTRO DE CONTA!</h1> <br>
             <h2>Nome da empresa:</h2>
-            <input id="ipt_nome_empresa">
-            <br> <br>
+            <input id="ipt_nome_empresa"> 
+            <h2>Email:</h2>
+            <input id="ipt_email">
+            <h2>CNPJ:</h2>
+            <input id="ipt_cnpj">
             <h2>Senha:</h2>
             <input id="ipt_senha">
-            <button onclick="entrar()">ENTRAR</button>
-            <br>
+            <h2>Confirmar a Senha:</h2>
+            <input id="ipt_conf_senha">
+            <button onclick="entrar()" class="bttLink">ENTRAR</button> <br>
             <div id="div_msg" style="display: flex; justify-content: center;"></div>
         </div>
     </div>
-<!-- Footer -->
+    <!-- Início do Footer -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="card">
+                <h1>BEETECH</h1>
+                <p id="top">Buscando inovação no </p>
+                <p>presente para um futuro</p>
+                <p>melhor</p>
+            </div>
+            <div class="card">
+                <h1>LINKS</h1>
+                <a href="">Home</a>
+                <a href="">Projeto</a>
+                <a href="">Simulador</a>
+                <a href="">Login</a>
+            </div>
+            <div class="card" id="contato">
+                <h1>CONTATO</h1>
+                <div id="house">
+                    <img src="../img/pet-house.png" alt="" id="imgHouse">
+                    <span>Endereço, número</span>
+                </div>
+                <div id="insta">
+                    <img src="../img/instagram.png" alt="" id="imgInsta">
+                    <span>@beetech_</span>
+                </div>
+                <div id="email">
+                    <img src="../img/o-email.png" alt="" id="imgEmail">
+                    <span>beetech@email.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Final do Footer-->
 
 </body>
 
 </html>
 
 <script>
-function entrar() {
-if(ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
-    div_msg.innerHTML = "Cadastro realizado com sucesso"
-    div_msg.style.color = "green"
-}
-else {
-    div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
-    div_msg.style.color = "red"
-}
-}
+    function entrar() {
+        if (ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
+            div_msg.innerHTML = "Cadastro realizado com sucesso"
+            div_msg.style.color = "green"
+        }
+        else {
+            div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
+            div_msg.style.color = "red"
+        }
+    }
 
 
 
