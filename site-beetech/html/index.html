@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleSimuladorFinanceiro.css">
     <title>BeeTech</title>
 </head>
 
 <body>
+
     <!--Início do Header-->
     <div class="header">
         <div class="container">
@@ -52,6 +54,39 @@
     </div>
     <!--Final do Banner2-->
 
+    <!-- Inicio Simulador Financeiro -->
+    <div class="SimuladorFinanceiro">
+        <div class="containerSimulador">
+            <div class="item">
+                <h1>Simule aqui seu faturamento</h1>
+                <p>Qual o total de apiários?</p>
+                <input type="text" id="iptTotalApiarios">
+                <p>Vai instalar em quantos apiários?</p>
+                <input type="text" id="iptInstalacao">
+                <p>Qual o seu faturamento mensal?</p>
+                <input type="text" id="iptValorProducao">
+                <br><br>
+                <div class="itembutton">
+                    <button onclick="calcular()">Calcular</button>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Final Simulador financeiro -->
+
+        <!-- Inicio Resultado -->
+        <div class="mensagemSimulador">
+            <div class="containerMensagem">
+                <div class="item">
+                    <h1>Resultados:</h1>
+                    <div id="divMensagem"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Final Resultado -->
+
     <!--Início do Footer-->
     <div class="footer">
         <div class="container">
@@ -86,6 +121,7 @@
         </div>
     </div>
     <!--Final do Footer-->
+
 </body>
 
 </html>
