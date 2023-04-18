@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap');
+
+body{
+    font-family: 'Inria Sans', sans-serif;
+    margin: 0;
+}
+/**/
+
+/*Padronização da Página*/
+.container{
+    display: flex;
+    margin: auto;
+    width: 90%;
+}
+.bttLink{
+    border: 1px solid #21292A;
+    padding: 12px;
+    transition-duration: 1.2ms;
+    background-color: #F0BF3A;
+}
+.bttLink:hover{
+    background-color: #ECEBF3;
+}
+
+/*Início do Header*/
+.header{
+    flex-direction: row;
+    background-color: #ECEBF3;
+}
+.header .container{
+    align-items: center;
+    justify-content: space-between;
+}
+.header .container img{
+    width: 85px;
+    height: 85px;
+}
+.navBar{
+    list-style: none;
+    width: 430px;
+    display: flex;
+    justify-content: space-around;
+}
+.navBar a{
+    color: #21292A;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/*Final do Header*/
+
+/*Footer*/
+
+.footer {
+    border-top: #21292A solid 2px;
+    background-color: #ECEBF3;
+    height: 280px;
+}
+
+.footer .container {
+    justify-content: space-around;
+}
+
+.footer .card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer .card h1 {
+    color: #F0BF3A;
+    margin-bottom: 45px;
+    text-shadow: 2px 0 #21292A, -2px 0 #21292A, 0 2px #21292A, 0 -2px #21292A,
+    1px 1px #21292A, -1px -1px #21292A, 1px -1px #21292A, -1px 1px #21292A;
+}
+
+.footer p {
+    margin: 7px;
+}
+
+.footer #top {
+    margin-top: 20px;
+}
+
+.footer span {
+    margin: 15px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #000000;
+    margin: 7px;
+}
+
