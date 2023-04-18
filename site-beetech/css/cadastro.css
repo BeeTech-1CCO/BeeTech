@@ -55,11 +55,6 @@ text-decoration: none;
     border-radius: 45px;
     width: 40%;
 }
-
-.banner input {
-    width: 400px;
-    height: 20px;
-}
 .banner .container button {
     margin-top: 7.5%;
     font-weight: 700;
@@ -70,16 +65,13 @@ text-decoration: none;
     margin-top: 2%;
     padding-left: 2.5%;
     margin-bottom: 1%;
+    width: 81%;
+    justify-content: left;
+    align-items: left;
 }
 .banner .container input{
     border: 2px solid black;
     border-radius: 10px;
     width: 80%;
-}
-
-
-.banner h2{
-    width: 81%;
-justify-content: left;
-align-items: left;
+    height: 20px;
 }
