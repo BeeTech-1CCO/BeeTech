@@ -8,6 +8,7 @@
     <title>Cadastro - BeeTech</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="icon" href="../img/logoIcon.png">
 </head>
 
 <body>
@@ -29,18 +30,18 @@
     <!-- Banner -->
     <div class="banner">
         <div class="container">
-            <h1>REGISTRO DE CONTA!</h1> <br>
+            <h1>REGISTRO DE CONTA</h1> <br>
             <h2>Nome da empresa:</h2>
             <input id="ipt_nome_empresa"> 
             <h2>Email:</h2>
-            <input id="ipt_email">
+            <input id="ipt_email" type="email">
             <h2>CNPJ:</h2>
             <input id="ipt_cnpj">
             <h2>Senha:</h2>
-            <input id="ipt_senha">
+            <input id="ipt_senha" type="password">
             <h2>Confirmar a Senha:</h2>
-            <input id="ipt_conf_senha">
-            <button onclick="entrar()" class="bttLink">ENTRAR</button> <br>
+            <input id="ipt_conf_senha" type="password">
+            <button onclick="entrar()" class="bttLink">REGISTRAR</button><br>
             <div id="div_msg" style="display: flex; justify-content: center;"></div>
         </div>
     </div>
@@ -95,7 +96,4 @@
             div_msg.style.color = "red"
         }
     }
-
-
-
 </script>

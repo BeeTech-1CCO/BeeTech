@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-index.css">
     <link rel="stylesheet" href="css/styleSimuladorFinanceiro.css">
+    <link rel="icon" href="../site-beetech/img/logoIcon.png">
     <title>BeeTech</title>
 </head>
 
@@ -45,9 +46,9 @@
             <div class="texto">
                 <h1>QUEM SOMOS NÓS?</h1>
                 <P>
-                    Somos a BeeTech, uma equipe com a proposta
+                    Somos a <b>BeeTech</b>, uma equipe com a proposta
                     de melhorar a qualidade do ambiente das
-                    abelhas, aumentando a produtividade delas.
+                    abelhas, aumentando a <b>produtividade</b> delas.
                 </P>
             </div>
         </div>
@@ -59,8 +60,8 @@
         <div class="cor-backround">
             <div class="texto1">
                 <p>
-                    As abelhas são fundamentais para a polinização, reultando na produção do mel que vem aumentando nas
-                    últimas dácadas, porém as mesmas enfrentam severos problemas climáticos.
+                    As <b>abelhas</b> são fundamentais para a polinização, reultando na produção do <b>mel</b> que vem <b>aumentando</b> nas
+                    últimas dácadas, porém as mesmas enfrentam severos <b>problemas climáticos</b>.
 
                 </p>
             </div>
@@ -73,9 +74,9 @@
         <div class="cor-backround2">
             <div class="texto2">
                 <p>
-                    As altas e baixas temperaturas podem afetar a produção de mel negativamente. Com uso de sensores é
-                    possível entender quandp essas temperaturas são um problema e prevenir problemas na produção em até
-                    50%.
+                    As altas e baixas <b>temperaturas</b> podem afetar a produção de mel <b>negativamente</b>. Com uso de <b>sensores</b> é
+                    possível entender quando essas temperaturas são um problema e <b>prevenir problemas</b> na produção em <b>até
+                    50%.</b>
 
                 </p>
             </div>
@@ -88,12 +89,12 @@
         <div class="containerSimulador">
             <div class="item">
                 <h1>Simule aqui seu faturamento</h1>
-                <p>Qual o total de apiários?</p>
+                <p>Qual o total de apiários de sua produção?</p>
                 <input type="text" id="iptTotalApiarios">
-                <p>Vai instalar em quantos apiários?</p>
+                <p>Pretende instalar em quantos apiários?</p>
                 <input type="text" id="iptInstalacao">
-                <p>Qual o seu faturamento mensal?</p>
-                <input type="text" id   ="iptValorProducao">
+                <p>Qual o seu faturamento mensal? (em reais)</p>
+                <input type="text" id="iptValorProducao">
                 <br><br>
                 <div class="itembutton">
                     <button onclick="calcular()">Calcular</button>
@@ -169,12 +170,12 @@
         var validacao = true;
 
         if (axTotalApiarios == '') {
-            alert ('O campo "Qual o total de apiários?" tem que estar preenchido');
+            alert ('O campo "Qual o total de apiários?" deve estar preenchido');
             validacao = false;
         }
 
         if (axInstalacao == '') {
-            alert ('O campo "Vai instalar em quantos apiários?" tem que estar preenchido');
+            alert ('O campo "Vai instalar em quantos apiários?" deve estar preenchido');
             validacao = false; 
         }
         if (axInstalacao > axTotalApiarios) {
@@ -183,21 +184,21 @@
         }
 
         if (axValorProducao == '') {
-            alert ('O campo "Qual o seu faturamento mensal?" tem que estar preenchido');
+            alert ('O campo "Qual o seu faturamento mensal?" deve estar preenchido');
             validacao = false; 
         }
 
 
         if (validacao == true) {
             if (axTotalApiarios == axInstalacao) {
-                divMensagem.innerHTML = `<h2>Valor de produção de ${axInstalacao} apaiarios</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta}</span></b></li><br>
-            <li><span>Com nosso sistema de monitoramento pode chegar em: <b>R$${axContaFinal}</b><span></li></ul>`
+                divMensagem.innerHTML = `<h2>Valor de produção em ${axInstalacao} apiários, com sensores:</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta.toFixed(2)}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axContaFinal.toFixed(2)}</b><span></li></ul>`
             } else {
-                divMensagem.innerHTML = `<h2>Valor de produção de ${axInstalacao} apaiarios</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta}</span></b></li><br>
-            <li><span>Com nosso sistema de monitoramento pode chegar em: <b>R$${axContaFinal}</b><span></li></ul><br>
-         <h2>Valor de produção de todos os apiarios junto:</h2><br>
-         <ul><li><span>Valor atual: <b>R$${axValorProducao}</b></span></li><br>
-          <li><span>Com nosso monitoramento pode chegar em: <b>R$${axCalculoFinal}</b><span></li></ul>.`
+                divMensagem.innerHTML = `<h2>Valor de produção em ${axInstalacao} apiários, com sensores:</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta.toFixed(2)}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axContaFinal.toFixed(2)}</b><span></li></ul><br>
+         <h2>Valor de produção em todos os apiários, com sensores:</h2><br>
+         <ul><li><span>Valor atual: <b>R$${axValorProducao.toFixed(2)}</b></span></li><br>
+          <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axCalculoFinal.toFixed(2)}</b><span></li></ul>.`
             }
 
         } 

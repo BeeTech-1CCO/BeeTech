@@ -45,7 +45,7 @@ text-decoration: none;
     margin-bottom: 30px;
 }
 .banner .container {
-    height: 75%;
+    height: 90%;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -53,6 +53,7 @@ text-decoration: none;
     color: #ECEBF3;
     border-radius: 45px;
     width: 40%;
+    border: black solid 2px;
 }
 .banner .container button {
     margin-top: 7.5%;
@@ -73,4 +74,6 @@ text-decoration: none;
     border-radius: 10px;
     width: 80%;
     height: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }

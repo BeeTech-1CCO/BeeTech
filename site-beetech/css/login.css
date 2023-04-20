@@ -14,7 +14,6 @@ body{
     align-items: center;
     margin-top: 25px;
     margin-bottom: 30px;
-
 }
 
 #conteudo{
@@ -27,6 +26,7 @@ body{
     width: 500px;
     align-items: center;
     justify-content: center;
+    border: black solid 2px;
 }
 
 #alinhamento{
@@ -49,6 +49,8 @@ body{
     border: 2px solid black;
     border-radius: 10px;
     height: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #conteudo button{
@@ -63,15 +65,20 @@ body{
     font-size: 18px;
 }
 
-#conteudo a{
-    color: #bb9429;
-    margin-top: 15px;
-    text-decoration: none;
-    
+#conteudo button:hover {
+    background-color: #ECEBF3;
 }
 
-#conteudo a span{
-    text-decoration:underline;
-    color: #e3b63a;
+#conteudo a{
+    color: #F0BF3A;
+    margin-top: 15px;
+    text-decoration: none;
+}
 
+#conteudo a:hover {
+    text-decoration: underline;
+}
+
+#conteudo span{
+    margin-top: 2%;
 }
