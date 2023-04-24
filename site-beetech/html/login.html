@@ -37,14 +37,14 @@
             <div id="alinhamento">
                 <div class="label">
                     <h2>Usuário:</h2>
-                    <input type="text">
+                    <input type="text" id="usuario">
                 </div>
                 <div class="label">
                     <h2>Senha:</h2>
-                    <input type="password">
+                    <input type="password" id="senha">
                 </div>
             </div>
-            <button id="enviar" class="bttLink">ENTRAR</button>
+            <button id="enviar" class="bttLink" onclick="entrar()">ENTRAR</button>
             <span>Não tem conta? <a href="cadastro.html">Cadastre-se</a></span>
         </div>
     </div>
@@ -91,3 +91,22 @@
 </body>
 
 </html>
+
+<script>
+
+    function entrar() {
+        var prosseguir = true
+        if (usuario.value != `Fernando Brandão`) {
+            prosseguir = false
+        } else if (senha.value != `123456789`) {
+            prosseguir = false
+        }
+
+        if (!prosseguir) {
+            alert(`O usuário e a senha são incompatíveis`)
+        } else {
+            alert(`Log In feito com sucesso`)
+        }
+    }
+
+</script>
