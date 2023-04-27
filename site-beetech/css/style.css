@@ -187,3 +187,84 @@ b {
     justify-content: center;
 }
 
+/* Início das Configurações */
+
+.telaConfig {
+    background-color: #21292A;
+    height: 900px;
+}
+
+.bloco {
+    display: flex;
+    background-color: #ECEBF3;
+    height: 90%;
+    width: 100%;
+    border-radius: 10px;
+    border: #000000 solid 2px;
+    font-size: 20px;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.telaConfig .container {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.telaConfig img {
+    height: 300px;
+    width: 300px;
+    border: #000000 solid 3px;
+    border-radius: 10px;
+}
+
+.infoAtual p {
+    margin: 12px;
+}
+
+.infoAtual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+
+#alterarFoto:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#alterarFoto {
+    margin-bottom: 15%;
+    font-style: italic;
+}
+
+.telaConfig b {
+    font-size: 30px;
+    color: #000000;
+}
+
+.infoAlterar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: end;
+    border-right: #000000 solid 5px;
+}
+
+.infoAlterar p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.infoAlterar p {
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 30px;
+    font-size: 32px;
+}
+
+/* Final das Configurações */
