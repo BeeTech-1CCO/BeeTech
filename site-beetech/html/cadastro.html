@@ -86,14 +86,67 @@
 </html>
 
 <script>
+
     function entrar() {
-        if (ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
-            div_msg.innerHTML = "Cadastro realizado com sucesso"
-            div_msg.style.color = "green"
+        var verificacao = true; 
+        var  cnpj = (ipt_cnpj.value).length != 14;
+        if (ipt_nome_empresa.value != 'Fernando Brandão') {
+            verificacao = false
+            alert ("Nome da empresa incorreto")
+            ipt_nome_empresa.style='border: 2px solid red;'
+        }else if (ipt_nome_empresa.value == 'Fernando Brandão') {
+            ipt_nome_empresa.style='border: 2px solid black;'
         }
-        else {
-            div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
-            div_msg.style.color = "red"
+
+        if (ipt_email.value == '') {
+            verificacao = false
+            alert("Este compo tem que estar preenchido")
+            ipt_email.style='border: 2px solid red;'
+        }else {
+            ipt_email.style='border: 2px solid black;'
         }
+
+        if (cnpj) {
+            verificacao = false 
+            alert ("O cnpj tem que ter 14 dígitos")
+            ipt_cnpj.style='border: 2px solid red;'
+        }else if ((ipt_cnpj.value).length == 14 ) {
+            ipt_cnpj.style='border: 2px solid black;'
+        }
+
+        if (ipt_senha.value != '123456789') {
+            verificacao = false 
+            ipt_senha.style='border: 2px solid red;'
+            alert("Inserir a senha correta")
+        }else if (ipt_senha.value == '123456789') {
+            ipt_senha.style='border: 2px solid black;'
+        }
+
+        if (ipt_conf_senha.value != ipt_senha.value) {
+            verificacao = false
+            alert("O campo confirmar senha está diferente do campo senha")
+            ipt_conf_senha.style='border: 2px solid red;'
+        }else if (ipt_conf_senha.value == ipt_senha.value) {
+            ipt_conf_senha.style='border: 2px solid black;'
+        }
+        
+        if (verificacao == true) {
+            alert("Suas informações foram cadastrdas")
+            alert("Para terminar o cadastro ligue para nosso número de telefone ou mande mensagem para nosso email  Número de telefone: 954321268   email: beetech@email.com")
+            ipt_nome_empresa.value = ''
+            ipt_email.value = ''
+            ipt_cnpj.value = ''
+            ipt_senha.value = ''
+            ipt_conf_senha.value = ''
+        }
+
+        // if (ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
+        //     div_msg.innerHTML = "Cadastro realizado com sucesso"
+        //     div_msg.style.color = "green"
+        // }
+        // else {
+        //     div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
+        //     div_msg.style.color = "red"
+        // }
     }
 </script>
