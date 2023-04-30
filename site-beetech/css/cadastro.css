@@ -12,7 +12,7 @@ body {
     height: 100%;
     background-color: ECEBF3;
 }
-.header .container {
+.header .cadastro {
     width: 90%;
     margin: auto;
     display: flex;
@@ -24,7 +24,7 @@ text-decoration: none;
 }
 
 
-.header .container {
+.header .cadastro {
     justify-content: space-between;
 }
 
@@ -38,42 +38,59 @@ text-decoration: none;
 .banner{
     height: 700px;
     width: 100%;
-    display: flex;    
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 25px;
     margin-bottom: 30px;
 }
-.banner .container {
+.banner .cadastro {
+    display: flex;
     height: 90%;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     background-color: #21292A;
     color: #ECEBF3;
     border-radius: 45px;
-    width: 40%;
+    width: 60%;
     border: black solid 2px;
 }
-.banner .container button {
-    margin-top: 7.5%;
+.banner .cadastro button {
+    margin-top: 2%;
     font-weight: 700;
     border: 2px solid black;
     font-size: 18px;
 }
-.banner .container h2{
+.banner .cadastro h2{
     margin-top: 2%;
     padding-left: 2.5%;
     margin-bottom: 1%;
-    width: 81%;
+    width: 100%;
     justify-content: left;
     align-items: left;
 }
-.banner .container input{
+.banner .cadastro input{
     border: 2px solid black;
     border-radius: 10px;
-    width: 80%;
+    width: 100%;
     height: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+
+.banner .linhas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 13px;
+}
+
+.banner .campos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 1%;
 }

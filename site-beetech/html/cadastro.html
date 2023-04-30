@@ -29,18 +29,74 @@
     </div>
     <!-- Banner -->
     <div class="banner">
-        <div class="container">
+        <div class="cadastro">
             <h1>REGISTRO DE CONTA</h1> <br>
-            <h2>Nome da empresa:</h2>
-            <input id="ipt_nome_empresa"> 
-            <h2>Email:</h2>
-            <input id="ipt_email" type="email">
-            <h2>CNPJ:</h2>
-            <input id="ipt_cnpj">
-            <h2>Senha:</h2>
-            <input id="ipt_senha" type="password">
-            <h2>Confirmar a Senha:</h2>
-            <input id="ipt_conf_senha" type="password">
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Nome de usuário:</h2>
+                    <input id="ipt_nome_usuario" type="text">
+                </div>
+                <div class="campos">
+                    <h2>Email de contato:</h2>
+                    <input id="ipt_email" type="email">           
+                </div>
+                <div class="campos">
+                    <h2>Telefone de contato:</h2>
+                    <input id= "ipt_telefone" type="text" maxlength="11">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Nome da empresa:</h2>
+                    <input id="ipt_nome_empresa"> 
+                </div>
+                <div class="campos">
+                    <h2>CNPJ:</h2>
+                    <input id="ipt_cnpj" maxlength="14">
+                </div>
+                <div class="campos">
+                    <h2>Representante da empresa:</h2>
+                    <input id="ipt_representante" type="text">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Cidade:</h2>
+                    <input id="ipt_cidade" type="text">
+                </div>
+                <div class="campos">
+                    <h2>CEP:</h2>
+                    <input id="ipt_cep" type="text" maxlength="8">
+                </div>
+                <div class="campos">
+                    <h2>Bairro:</h2>
+                    <input id="ipt_bairro" type="text">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Rua:</h2>
+                    <input id="ipt_rua" type="text">
+                </div>
+                <div class="campos">
+                    <h2>Número:</h2>
+                    <input id="ipt_numero" type="text" maxlength="6">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Senha:</h2>
+                    <input id="ipt_senha" type="password">
+                </div>
+                <div class="campos">
+                    <h2>Confirmar Senha:</h2>
+                    <input id="ipt_conf_senha" type="password">
+                </div>
+            </div>
             <button onclick="entrar()" class="bttLink">REGISTRAR</button><br>
             <div id="div_msg" style="display: flex; justify-content: center;"></div>
         </div>
@@ -90,54 +146,113 @@
     function entrar() {
         var verificacao = true; 
         var  cnpj = (ipt_cnpj.value).length != 14;
-        if (ipt_nome_empresa.value != 'Fernando Brandão') {
+
+        if ((ipt_nome_usuario.value).length < 5) {
             verificacao = false
-            alert ("Nome da empresa incorreto")
-            ipt_nome_empresa.style='border: 2px solid red;'
-        }else if (ipt_nome_empresa.value == 'Fernando Brandão') {
-            ipt_nome_empresa.style='border: 2px solid black;'
+            alert ("Nome de usuário deve ter pelo menos 5 caracteres")
+            ipt_nome_usuario.style='border: 2px solid red;'
+        } else {
+            ipt_nome_usuario.style='border: 2px solid black;'
         }
 
         if (ipt_email.value == '') {
             verificacao = false
-            alert("Este compo tem que estar preenchido")
+            alert("O campo de E-mail deve estar preenchido")
             ipt_email.style='border: 2px solid red;'
-        }else {
+        } else {
             ipt_email.style='border: 2px solid black;'
+        }
+
+        if (ipt_telefone.value < 10) {
+            verificacao = false
+            alert("O telefone deve ter no mínimo 10 dígitos")
+            ipt_telefone.style='border: 2px solid red;'
+        } else {
+            ipt_telefone.style='border: 2px solid black;'
+        }
+
+        if ((ipt_nome_empresa.value).length < 1) {
+            verificacao = false
+            alert ("O nome da empresa deve estar preenchido")
+            ipt_nome_empresa.style='border: 2px solid red;'
+        } else {
+            ipt_nome_empresa.style='border: 2px solid black;'
         }
 
         if (cnpj) {
             verificacao = false 
-            alert ("O cnpj tem que ter 14 dígitos")
+            alert ("O CNPJ deve ter 14 dígitos")
             ipt_cnpj.style='border: 2px solid red;'
-        }else if ((ipt_cnpj.value).length == 14 ) {
+        } else {
             ipt_cnpj.style='border: 2px solid black;'
         }
 
-        if (ipt_senha.value != '123456789') {
+        if ((ipt_representante.value).length < 5) {
+            verificacao = false
+            alert ("O nome do representante deve ter no mínimo 5 caracteres")
+            ipt_representante.style='border: 2px solid red;'
+        } else {
+            ipt_representante.style='border: 2px solid black;'
+        }
+
+        if ((ipt_cidade.value).length < 1) {
+            verificacao = false
+            alert ("O nome da cidade deve estar preenchida")
+            ipt_cidade.style='border: 2px solid red;'
+        } else {
+            ipt_cidade.style='border: 2px solid black;'
+        }
+
+        if ((ipt_cep.value).length < 8) {
+            verificacao = false
+            alert ("O CEP deve conter 8 dígitos")
+            ipt_cep.style='border: 2px solid red;'
+        } else {
+            ipt_cep.style='border: 2px solid black;'
+        }
+        
+        if ((ipt_bairro.value).length < 1) {
+            verificacao = false
+            alert ("O nome do bairro deve estar preenchido")
+            ipt_bairro.style='border: 2px solid red;'
+        } else {
+            ipt_bairro.style='border: 2px solid black;'
+        }
+
+        if ((ipt_rua.value).length < 1) {
+            verificacao = false
+            alert ("O nome da rua deve estar preenchido")
+            ipt_rua.style='border: 2px solid red;'
+        } else {
+            ipt_rua.style='border: 2px solid black;'
+        }
+
+        if ((ipt_numero.value).length < 1) {
+            verificacao = false
+            alert (`O campo "Número" deve estar preenchido`)
+            ipt_numero.style='border: 2px solid red;'
+        } else {
+            ipt_numero.style='border: 2px solid black;'
+        }
+
+        if ((ipt_senha.value).length < 5) {
             verificacao = false 
+            alert("A senha deve ter no mínimo 5 dígitos")
             ipt_senha.style='border: 2px solid red;'
-            alert("Inserir a senha correta")
-        }else if (ipt_senha.value == '123456789') {
+        } else {
             ipt_senha.style='border: 2px solid black;'
         }
 
-        if (ipt_conf_senha.value != ipt_senha.value) {
+        if (ipt_conf_senha.value != ipt_senha.value || ipt_conf_senha.value == `` || (ipt_conf_senha.value).length < 5) {
             verificacao = false
-            alert("O campo confirmar senha está diferente do campo senha")
+            alert("A confirmação de senha está incorreta")
             ipt_conf_senha.style='border: 2px solid red;'
-        }else if (ipt_conf_senha.value == ipt_senha.value) {
+        } else if (ipt_conf_senha.value == ipt_senha.value) {
             ipt_conf_senha.style='border: 2px solid black;'
         }
         
         if (verificacao == true) {
-            alert("Suas informações foram cadastrdas")
-            alert("Para terminar o cadastro ligue para nosso número de telefone ou mande mensagem para nosso email  Número de telefone: 954321268   email: beetech@email.com")
-            ipt_nome_empresa.value = ''
-            ipt_email.value = ''
-            ipt_cnpj.value = ''
-            ipt_senha.value = ''
-            ipt_conf_senha.value = ''
+            alert("Suas informações foram cadastradas com sucesso")
         }
 
         // if (ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
