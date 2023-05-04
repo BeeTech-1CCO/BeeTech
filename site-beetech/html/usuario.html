@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/usuario.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -16,19 +16,17 @@
 <body>
 
     <!--Início do Header-->
-    <div class="menu">
-        <img src="../img/logo.png">
+    <div class="header">
+        <div class="container">
+            <img src="../img/logo.png" alt="Logo BeeTech" width="70px">
 
-        <!-- <div class="box">
-            <li> HOME</li>
-
-            <ul class="drop">
-                <img src="../img/user.png">
-                <li> Configurações </li>
-                <li> Sensores </li>
-
+            <ul class="navBar">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="usuarioConfiguracao.html" class="bttLink">CONFIGURAÇÕES</a></li>
             </ul>
-        </div> -->
+
+
+        </div>
     </div>
     <!--Final do Header-->
 
@@ -40,14 +38,14 @@
             <div id="emergencia">
 
                 <h1> EMERGÊNCIA</h1>
-                <p> </p>
+                <p> 10 </p>
 
             </div>
 
             <div id="risco">
 
                 <h1> Em risco</h1>
-                <p> </p>
+                <p>5</p>
 
             </div>
 
@@ -58,7 +56,7 @@
             <div id="estavel">
 
                 <h1>Nos padrões</h1>
-                <p> </p>
+                <p> 100 </p>
 
             </div>
 
@@ -172,7 +170,7 @@
         var contextoDht11Temperatura = document.getElementById('grafico_temperatura').getContext('2d');
         var dht11Temperatura = new Chart(
             contextoDht11Temperatura,
-            {
+            {   
                 type: 'line',
                 data: {
                     datasets: [{

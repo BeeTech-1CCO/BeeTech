@@ -82,7 +82,8 @@ body {
 
 #limite #emergencia {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #D9D9D9;
   color: #D54141;
   border: solid #D54141 5px;
@@ -94,12 +95,20 @@ body {
 
 }
 
+#limite p{
+  color: #21292A;
+  font-size: 30px;
+  font-weight: bold;
+
+}
+
 
 #limite #risco {
   display: flex;
-  justify-content: center;
-  background-color: #D9D9D9;
-  color: #F0BF3A;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d9d9d9f0;
+  color: #ffbb00;
   border: solid #F0BF3A 5px;
   font: 'Inria Sans';
   width: 45%;
@@ -110,7 +119,8 @@ body {
 
 #limite #estavel {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #D9D9D9;
   color: #0A7B30;
   border: solid #0A7B30 5px;
@@ -123,7 +133,7 @@ body {
 
 #limite #total {
   display: flex;
- flex-direction: column;
+  flex-direction: column;
   align-items: center;
   background-color: #D9D9D9;
   font: 'Inria Sans';
@@ -132,6 +142,7 @@ body {
   margin: auto;
 
 }
+
 
 
 #limite #total .alinhamento{
