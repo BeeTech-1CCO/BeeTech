@@ -84,10 +84,11 @@ const servidor = (
     app.listen(SERVIDOR_PORTA, () => {
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
-    app.get('/sensores/dht11/umidade', (_, response) => {
+    app.get('/registro/umidade', (_, response) => {
+        console.log(valoresDht11Umidade);
         return response.json(valoresDht11Umidade);
     });
-    app.get('/sensores/dht11/temperatura', (_, response) => {
+    app.get('/registro/temperatura', (_, response) => {
         return response.json(valoresDht11Temperatura);
      });
     // app.get('/sensores/luminosidade', (_, response) => {

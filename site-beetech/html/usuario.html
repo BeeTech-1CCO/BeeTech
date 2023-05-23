@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Tela do Usuário</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/usuario.css">
     <link rel="icon" href="../img/logoIcon.png">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 
 </head>
 
@@ -93,28 +97,28 @@
 
         <div class="alinhamento">
 
-            <div id="umidade">
+            <div id="umidade_div">
 
                 <div class="alinhamento">
 
-                <h1> Umidade </h1>
-            
-            </div>           
+                    <h1> Umidade </h1>
+
+                </div>
 
                 <canvas id="grafico_umidade"></canvas>
 
             </div>
 
-            <div id="temperatura">
+            <div id="temperatura_div">
                 <div class="alinhamento">
 
                     <h1>Temperatura</h1>
 
                 </div>
 
-               
-                    <canvas id="grafico_temperatura"></canvas>
-               
+
+                <canvas id="grafico_temperatura"></canvas>
+
 
             </div>
 
@@ -128,84 +132,127 @@
 
 <script>
 
-        /* -- dht11Umidade -- */
-        var contextoDht11Umidade = document.getElementById('grafico_umidade').getContext('2d');
-        var dht11Umidade = new Chart(
-            contextoDht11Umidade,
-            {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Umidade',
-                        type: 'line',
-                        borderColor: ['#45b3e7'],
-                        backgroundColor: ['#89cff0']
+    /* -- dht11Umidade -- */
+    var contextoDht11Umidade = document.getElementById('grafico_umidade').getContext('2d');
+    var dht11Umidade = new Chart(
+        contextoDht11Umidade,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Umidade',
+                    type: 'line',
+                    borderColor: ['#45b3e7'],
+                    backgroundColor: ['#89cff0']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
                 },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Umidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
+                animation: {
+                    duration: 0
                 }
             }
-        );
+        }
+    );
 
-        /* -- dht11Temperatura -- */
-        var contextoDht11Temperatura = document.getElementById('grafico_temperatura').getContext('2d');
-        var dht11Temperatura = new Chart(
-            contextoDht11Temperatura,
-            {   
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: "Temperatura",
-                        type: 'line',
-                        borderColor: ['#ff3232'],
-                        backgroundColor: ['#ff7f7f']
+    /* -- dht11Temperatura -- */
+    var contextoDht11Temperatura = document.getElementById('grafico_temperatura').getContext('2d');
+    var dht11Temperatura = new Chart(
+        contextoDht11Temperatura,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Temperatura",
+                    type: 'line',
+                    borderColor: ['#ff3232'],
+                    backgroundColor: ['#ff7f7f']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
                 },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Luminosidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
+                animation: {
+                    duration: 0
                 }
             }
-        );
+        }
+    );
 
 
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3000/registro' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        
+        var valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            console.log(valor);
+            grafico.update();
+        })
+    }
+
+    setInterval(() => {
+
+        obterDados(dht11Umidade, '/umidade');
+        obterDados(dht11Temperatura, '/temperatura');
+        // obterDados(1,'/id');
+        // obterDados(luminosidade, 'luminosidade');
+        // obterDados(lm35Temperatura, 'lm35/temperatura');
+        // obterDados(chave, 'chave');
+        
+
+    }, 1000);
 
 </script>
