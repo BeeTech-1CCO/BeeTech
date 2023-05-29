@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-index.css">
+    <link rel="stylesheet" href="css/styleSimuladorFinanceiro.css">
+    <link rel="icon" href="../site-beetech/img/logoIcon.png">
+    <title>BeeTech</title>
+</head>
+
+<body>
+
+    <!--Início do Header-->
+    <div class="header">
+        <div class="container">
+            <img src="img/logo.png" alt=""></img>
+            <ul class="navBar">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#simulador">SIMULADOR</a></li>
+                <li><a href="html/login.html" class="bttLink">LOGIN</a></li>
+                <li><a href="html/cadastro.html" class="bttLink">CADASTRO</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--Final do Header-->
+    <!--Início do Banner1-->
+    <div class="banner1">
+        <div class="container">
+            <p>
+                Inovando a maneira de preservar o que amamos!
+            </p>
+        </div>
+    </div>
+    <!--Final do Banner1-->
+
+    <!--Início do Banner2-->
+    <div class="banner2">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="">
+            </div>
+            <div class="texto">
+                <h1>QUEM SOMOS NÓS?</h1>
+                <P>
+                    Somos a <b>BeeTech</b>, uma equipe com a proposta
+                    de melhorar a qualidade do ambiente das
+                    abelhas, aumentando a <b>produtividade</b> delas.
+                </P>
+            </div>
+        </div>
+    </div>
+    <!--Final do Banner2-->
+
+    <!--Início do Banner3-->
+    <div class="banner3" id="bannerProjeto">
+        <div class="cor-backround">
+            <div class="texto1">
+                <p>
+                    As <b>abelhas</b> são fundamentais para a polinização, reultando na produção do <b>mel</b> que vem <b>aumentando</b> nas
+                    últimas dácadas, porém as mesmas enfrentam severos <b>problemas climáticos</b>.
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Final do Banner3-->
+
+    <!--Início do Banner4-->
+    <div class="banner4">
+        <div class="cor-backround2">
+            <div class="texto2">
+                <p>
+                    As altas e baixas <b>temperaturas</b> podem afetar a produção de mel <b>negativamente</b>. Com uso de <b>sensores</b> é
+                    possível entender quando essas temperaturas são um problema e <b>prevenir problemas</b> na produção em <b>até
+                    50%.</b>
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Final do Banner4-->
+
+    <!-- Inicio Simulador Financeiro -->
+    <div class="SimuladorFinanceiro" id="simulador">
+        <div class="containerSimulador">
+            <div class="item">
+                <h1>Simule aqui seu faturamento</h1>
+                <p>Qual o total de apiários de sua produção?</p>
+                <input type="text" id="iptTotalApiarios">
+                <p>Pretende instalar em quantos apiários?</p>
+                <input type="text" id="iptInstalacao">
+                <p>Qual o seu faturamento mensal? (em reais)</p>
+                <input type="text" id="iptValorProducao">
+                <br><br>
+                <div class="itembutton">
+                    <button onclick="calcular()">Calcular</button>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Final Simulador financeiro -->
+
+        <!-- Inicio Resultado -->
+        <div class="mensagemSimulador">
+            <div class="containerMensagem">
+                <div class="item">
+                    <h1>Resultados:</h1>
+                    <div id="divMensagem"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Final Resultado -->
+
+    <!--Início do Footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="card">
+                <h1>BEETECH</h1>
+                <p id="top">Buscando inovação no </p>
+                <p>presente para um futuro</p>
+                <p>melhor</p>
+            </div>
+            <div class="card">
+                <h1>LINKS</h1>
+                <a href="">Home</a>
+                <a href="#bannerProjeto">Projeto</a>
+                <a href="#simulador">Simulador</a>
+                <a href="html/login.html">Login</a>
+            </div>
+            <div class="card">
+                <h1>CONTATO</h1>
+                <div id="house">
+                    <img src="img/pet-house.png" alt="" id="imgHouse">
+                    <span>Endereço, número</span>
+                </div>
+                <div id="insta">
+                    <img src="img/instagram.png" alt="" id="imgInsta">
+                    <span>@beetech_</span>
+                </div>
+                <div id="email">
+                    <img src="img/o-email.png" alt="" id="imgEmail">
+                    <span>beetech@email.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+<script>
+
+    function calcular() {
+        var axTotalApiarios = Number(iptTotalApiarios.value);
+        var axInstalacao = Number(iptInstalacao.value);
+        var axValorProducao = Number(iptValorProducao.value);
+        var axConta = (axInstalacao * axValorProducao) / axTotalApiarios;
+        var axContaFinal = (axConta * 0.5) + axConta;
+        var axCalculo = axValorProducao * 0.5;
+        var axCalculoFinal = axValorProducao + axCalculo;
+        var validacao = true;
+
+        if (axTotalApiarios == '') {
+            alert ('O campo "Qual o total de apiários?" deve estar preenchido');
+            validacao = false;
+        }
+
+        if (axInstalacao == '') {
+            alert ('O campo "Vai instalar em quantos apiários?" deve estar preenchido');
+            validacao = false; 
+        }
+        if (axInstalacao > axTotalApiarios) {
+            alert ('Valor de instalções maior que seu total de apiários')
+            validacao = false;
+        }
+
+        if (axValorProducao == '') {
+            alert ('O campo "Qual o seu faturamento mensal?" deve estar preenchido');
+            validacao = false; 
+        }
+
+
+        if (validacao == true) {
+            if (axTotalApiarios == axInstalacao) {
+                divMensagem.innerHTML = `<h2>Valor de produção em ${axInstalacao} apiários, com sensores:</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta.toFixed(2)}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axContaFinal.toFixed(2)}</b><span></li></ul>`
+            } else {
+                divMensagem.innerHTML = `<h2>Valor de produção em ${axInstalacao} apiários, com sensores:</h2><br>  <ul><li><span>Valor atual: <b>R$${axConta.toFixed(2)}</span></b></li><br>
+            <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axContaFinal.toFixed(2)}</b><span></li></ul><br>
+         <h2>Valor de produção em todos os apiários, com sensores:</h2><br>
+         <ul><li><span>Valor atual: <b>R$${axValorProducao.toFixed(2)}</b></span></li><br>
+          <li><span>Com nosso sistema de monitoramento sua produção pode chegar em até: <b>R$${axCalculoFinal.toFixed(2)}</b><span></li></ul>.`
+            }
+
+        } 
+
+    }
+
+</script>
