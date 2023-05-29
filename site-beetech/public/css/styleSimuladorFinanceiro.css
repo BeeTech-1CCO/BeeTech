@@ -1,0 +1,124 @@
+.SimuladorFinanceiro {
+
+    height: 820px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+
+}
+
+/* Inicio simulador financeiro */
+
+.containerSimulador {
+    height: 490px;
+    width: 480px;
+    display: flex;
+    justify-content: center;
+    background-color: #21292A;
+    border-radius: 40px;
+    margin: 0 105px;
+    border: black solid 3px;
+}
+
+.containerSimulador p {
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.containerSimulador .item {
+
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+}
+
+.containerSimulador .item .itembutton {
+    display: flex;
+    justify-content: center;
+}
+
+.containerSimulador .item h1 {
+    text-align: center;
+    color: #F0BF3A;
+}
+
+.containerSimulador .item button {
+    background-color: #F0BF3A;
+    border: 2px solid black;
+    height: 50px;
+    width: 240px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.containerSimulador .item button:hover {
+    background-color: #ECEBF3;
+} 
+
+h1 {
+    font-weight: bold;
+}
+
+/* Final simulador financeiro */
+
+/* Inicio Resultado */
+
+.mensagemSimulador {
+    height: 490px;
+    width: 420px;
+    border: solid 2px black;
+    border-radius: 40px;
+    background-color: white;
+
+}
+
+.containerMensagem {
+
+    display: flex;
+
+}
+
+.mensagemSimulador .containerMensagem .item {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mensagemSimulador .containerMensagem .item h1 {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.mensagemSimulador .containerMensagem .item #divMensagem {
+
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+
+}
+
+.mensagemSimulador .containerMensagem .item #divMensagem h2 {
+    margin: 0;
+    text-align: center;
+}
+
+
+
+/* Final resultado */
