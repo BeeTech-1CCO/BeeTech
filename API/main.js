@@ -91,6 +91,9 @@ const servidor = (
     app.get('/registro/temperatura', (_, response) => {
         return response.json(valoresDht11Temperatura);
      });
+     app.get('/registro/fkSensor', (_, response) => {
+        return response.json(valoresFK);
+     });
     // app.get('/sensores/luminosidade', (_, response) => {
     //     return response.json(valoresLuminosidade);
     // });
@@ -105,12 +108,14 @@ const servidor = (
 (async () => {
     const valoresDht11Umidade = [];
     const valoresDht11Temperatura = [];
+    const valoresFK = [];
     // const valoresLuminosidade = [];
     // const valoresLm35Temperatura = [];
     // const valoresChave = [];
     await serial(
         valoresDht11Umidade,
         valoresDht11Temperatura,
+        valoresFK
         // valoresLuminosidade,
         // valoresLm35Temperatura,
         // valoresChave
@@ -118,6 +123,7 @@ const servidor = (
     servidor(
         valoresDht11Umidade,
         valoresDht11Temperatura,
+        valoresFK
         // valoresLuminosidade,
         // valoresLm35Temperatura,
         // valoresChave
