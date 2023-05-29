@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - BeeTech</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="icon" href="../img/logoIcon.png">
+    <script type="text/javascript" src="../js/funcoes.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <img src="../img/logo.png" alt="Logo BeeTech" width="70px">
+
+            <ul class="navBar">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../index.html#simulador">SIMULADOR</a></li>
+                <li><a href="login.html" class="bttLink">LOGIN</a></li>
+                <li><a href="cadastro.html" class="bttLink">CADASTRAR</a></li>
+            </ul>
+
+
+        </div>
+    </div>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="cadastro">
+            <div id="cardErro"></div>
+            <h1>REGISTRO DE CONTA</h1> <br>
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Nome de usuário:</h2>
+                    <input id="ipt_nome_usuario" type="text">
+                </div>
+                <div class="campos">
+                    <h2>Email de contato:</h2>
+                    <input id="ipt_email" type="email">
+                </div>
+                <div class="campos">
+                    <h2>Telefone de contato:</h2>
+                    <input id="ipt_telefone" type="text" maxlength="11">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Nome da empresa:</h2>
+                    <input id="ipt_nome_empresa">
+                </div>
+                <div class="campos">
+                    <h2>CNPJ:</h2>
+                    <input id="ipt_cnpj" maxlength="14">
+                </div>
+                <div class="campos">
+                    <h2>Representante da empresa:</h2>
+                    <input id="ipt_representante" type="text">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Cidade:</h2>
+                    <input id="ipt_cidade" type="text">
+                </div>
+                <div class="campos">
+                    <h2>CEP:</h2>
+                    <input id="ipt_cep" type="text" maxlength="8">
+                </div>
+                <div class="campos">
+                    <h2>Bairro:</h2>
+                    <input id="ipt_bairro" type="text">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Rua:</h2>
+                    <input id="ipt_rua" type="text">
+                </div>
+                <div class="campos">
+                    <h2>Número:</h2>
+                    <input id="ipt_numero" type="text" maxlength="6">
+                </div>
+            </div>
+
+            <div class="linhas">
+                <div class="campos">
+                    <h2>Senha:</h2>
+                    <input id="ipt_senha" type="password">
+                </div>
+                <div class="campos">
+                    <h2>Confirmar Senha:</h2>
+                    <input id="ipt_conf_senha" type="password">
+                </div>
+            </div>
+            <button onclick="entrar()" class="bttLink">REGISTRAR</button><br>
+            <div id="div_msg" style="display: flex; justify-content: center;"></div>
+        </div>
+    </div>
+    <!-- Início do Footer -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="card">
+                <h1>BEETECH</h1>
+                <p id="top">Buscando inovação no </p>
+                <p>presente para um futuro</p>
+                <p>melhor</p>
+            </div>
+            <div class="card">
+                <h1>LINKS</h1>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#bannerProjeto">Projeto</a>
+                <a href="../index.html#simulador">Simulador</a>
+                <a href="login.html">Login</a>
+            </div>
+            <div class="card" id="contato">
+                <h1>CONTATO</h1>
+                <div id="house">
+                    <img src="../img/pet-house.png" alt="" id="imgHouse">
+                    <span>Endereço, número</span>
+                </div>
+                <div id="insta">
+                    <img src="../img/instagram.png" alt="" id="imgInsta">
+                    <span>@beetech_</span>
+                </div>
+                <div id="email">
+                    <img src="../img/o-email.png" alt="" id="imgEmail">
+                    <span>beetech@email.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Final do Footer-->
+
+</body>
+
+</html>
+
+<script>
+
+    function entrar() {
+        var verificacao = true;
+        var cnpjVar = (ipt_cnpj.value).length != 14;
+        var nomeVar = ipt_nome_usuario.value;
+        var emailVar = ipt_email.value;
+        var telefoneVar = ipt_telefone.value;
+        var nome_empresaVar = ipt_nome_empresa.value;
+        var representanteVar = ipt_representante.value;
+        var cidadeVar = ipt_cidade.value;
+        var cepVar = ipt_cep.value;
+        var bairroVar = ipt_bairro.value;
+        var ruaVar = ipt_rua.value;
+        var numeroVar = ipt_numero.value;
+        var senhaVar = ipt_senha.value;
+        var confirmacaoSenhaVar = ipt_conf_senha.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if ((nomeVar).length < 5) {
+            verificacao = false
+            alert("Nome de usuário deve ter pelo menos 5 caracteres")
+            ipt_nome_usuario.style = 'border: 2px solid red;'
+        } else {
+            ipt_nome_usuario.style = 'border: 2px solid black;'
+        }
+
+        if (emailVar == '') {
+            verificacao = false
+            alert("O campo de E-mail deve estar preenchido")
+            ipt_email.style = 'border: 2px solid red;'
+        } else {
+            ipt_email.style = 'border: 2px solid black;'
+        }
+
+        if (telefoneVar < 10) {
+            verificacao = false
+            alert("O telefone deve ter no mínimo 10 dígitos")
+            ipt_telefone.style = 'border: 2px solid red;'
+        } else {
+            ipt_telefone.style = 'border: 2px solid black;'
+        }
+
+        if ((nome_empresaVar).length < 1) {
+            verificacao = false
+            alert("O nome da empresa deve estar preenchido")
+            ipt_nome_empresa.style = 'border: 2px solid red;'
+        } else {
+            ipt_nome_empresa.style = 'border: 2px solid black;'
+        }
+
+        if (cnpjVar) {
+            verificacao = false
+            alert("O CNPJ deve ter 14 dígitos")
+            ipt_cnpj.style = 'border: 2px solid red;'
+        } else {
+            ipt_cnpj.style = 'border: 2px solid black;'
+        }
+
+        if ((representanteVar).length < 5) {
+            verificacao = false
+            alert("O nome do representante deve ter no mínimo 5 caracteres")
+            ipt_representante.style = 'border: 2px solid red;'
+        } else {
+            ipt_representante.style = 'border: 2px solid black;'
+        }
+
+        if ((cidadeVar).length < 1) {
+            verificacao = false
+            alert("O nome da cidade deve estar preenchida")
+            ipt_cidade.style = 'border: 2px solid red;'
+        } else {
+            ipt_cidade.style = 'border: 2px solid black;'
+        }
+
+        if ((cepVar).length < 8) {
+            verificacao = false
+            alert("O CEP deve conter 8 dígitos")
+            ipt_cep.style = 'border: 2px solid red;'
+        } else {
+            ipt_cep.style = 'border: 2px solid black;'
+        }
+
+        if ((bairroVar).length < 1) {
+            verificacao = false
+            alert("O nome do bairro deve estar preenchido")
+            ipt_bairro.style = 'border: 2px solid red;'
+        } else {
+            ipt_bairro.style = 'border: 2px solid black;'
+        }
+
+        if ((ruaVar).length < 1) {
+            verificacao = false
+            alert("O nome da rua deve estar preenchido")
+            ipt_rua.style = 'border: 2px solid red;'
+        } else {
+            ipt_rua.style = 'border: 2px solid black;'
+        }
+
+        if ((numeroVar).length < 1) {
+            verificacao = false
+            alert(`O campo "Número" deve estar preenchido`)
+            ipt_numero.style = 'border: 2px solid red;'
+        } else {
+            ipt_numero.style = 'border: 2px solid black;'
+        }
+
+        if ((senhaVar).length < 5) {
+            verificacao = false
+            alert("A senha deve ter no mínimo 5 dígitos")
+            ipt_senha.style = 'border: 2px solid red;'
+        } else {
+            ipt_senha.style = 'border: 2px solid black;'
+        }
+
+        if (ipt_conf_senha.value != ipt_senha.value || ipt_conf_senha.value == `` || (ipt_conf_senha.value).length < 5) {
+            verificacao = false
+            alert("A confirmação de senha está incorreta")
+            ipt_conf_senha.style = 'border: 2px solid red;'
+        } else if (ipt_conf_senha.value == ipt_senha.value) {
+            ipt_conf_senha.style = 'border: 2px solid black;'
+        }
+
+        if (verificacao == true) {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    telefoneServer: telefoneVar,
+                    nome_empresaServer: nome_empresaVar,
+                    cnpjServer: cnpjVar,
+                    representanteSever: representanteVar,
+                    cidadeServer: cidadeVar,
+                    cepServer: cepVar,
+                    bairroServer: bairroVar,
+                    ruaServer: ruaVar,
+                    numeroServer: numeroVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+            alert("Suas informações foram cadastradas com sucesso")
+
+            return false;
+        }
+
+        function sumirMensagem() {
+            cardErro.style.display = "none";
+        }
+    }
+
+        // if (ipt_nome_empresa.value == "BeeTech" && ipt_senha.value == "beetech") {
+        //     div_msg.innerHTML = "Cadastro realizado com sucesso"
+        //     div_msg.style.color = "green"
+        // }
+        // else {
+        //     div_msg.innerHTML = "Cadastro não efetuado, reinsira os valores"
+        //     div_msg.style.color = "red"
+        // }
+
+        // Enviando o valor da nova input
+</script>
