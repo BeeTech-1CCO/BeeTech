@@ -1,0 +1,42 @@
+.dashboard {
+    background-color: #21292A;
+    height: 920.5px;
+}
+
+#lineCharts {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.dashboard .container {
+    display: flex;
+    flex-direction: column;
+}
+
+#alerts {
+    display: flex;
+    height: 350px;
+    margin-top: 40px;
+    justify-content: space-between;
+    margin-left: 15%;
+}
+
+#alerts div {
+    background-color: #ECEBF3;
+    width: 800px;
+    border: #FF0000 solid 3px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+#alerts h1 {
+    color: #FF0000;
+}
+/*
+.dashboard .dashAvisos {
+
+}
+*/
