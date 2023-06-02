@@ -1,211 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tela do Usuário</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/usuario.css">
     <link rel="icon" href="../../img/logoIcon.png">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>BeeTech - Cards</title>
+
+    <link rel="stylesheet" href="../../css/menu_dashboard.css">
+    <link rel="stylesheet" href="../../css/style_cards.css">
+
+    <script src="../js/funcoes.js"></script>
+    <script src="./alerta.js"></script>
 
 </head>
 
-<body>
+<body onload="validarSessao(), atualizacaoPeriodica()">
 
-    <!--Início do Header-->
-    <div class="header">
-        <div class="container">
-            <img src="../../img/logo.png" alt="Logo BeeTech" width="70px">
-
-            <ul class="navBar">
-                <li><a href="../../index.html">HOME</a></li>
-                <li><a href="usuarioConfiguracao.html" class="bttLink">CONFIGURAÇÕES</a></li>
-            </ul>
+    <!-- Menu Lateral-->
 
 
-        </div>
-    </div>
-    <!--Final do Header-->
+    <div id="menu-lateral">
 
+        <div id="titulo">
 
-    <div id="limite">
-
-        <div class="alinhamento">
-
-            <div id="emergencia">
-
-                <h1> EMERGÊNCIA</h1>
-                <p> 10 </p>
-
-            </div>
-
-            <div id="risco">
-
-                <h1> Em risco</h1>
-                <p>5</p>
-
-            </div>
+            <p> <span>Bee</span>Tech</p>
 
         </div>
 
-        <div class="alinhamento">
+        <div id="user">
 
-            <div id="estavel">
-
-                <h1>Nos padrões</h1>
-                <p> 100 </p>
-
-            </div>
-
-            <div id="total">
-
-                <div class="alinhamento">
-
-                    <h1>Total de Ápiarios: </h1> <label> </label>
-
-                </div>
-                <div class="alinhamento">
-
-                    <div class="icon">
-                        <img src="../img/perigo.webp" alt="">
-                        <p> </p>
-
-                    </div>
-
-                    <div class="icon">
-                        <img src="../img/risco.png" alt="">
-                        <p> </p>
-                    </div>
-
-                    <div class="icon">
-                        <img src="../img/ok.webp" alt="">
-                        <p></p>
-                    </div>
-                </div>
-
-            </div>
+            <p> Olá, <span id="b_usuario"> user</span> </p>
 
         </div>
 
-        <div class="alinhamento">
+        <div id="botoes">
+            <div class="alinhamento">
 
-            <div id="umidade">
-
-                <div class="alinhamento">
-
-                <h1> Umidade </h1>
-            
-            </div>           
-
-                <canvas id="grafico_umidade"></canvas>
+                <a href="cards.html" class="botoes-diferentes">Apiários</a>
 
             </div>
 
-            <div id="temperatura">
-                <div class="alinhamento">
+            <div class="alinhamento">
 
-                    <h1>Temperatura</h1>
+                <a href="dashboard.html"> Gráficos</a>
 
-                </div>
+            </div>
 
-               
-                    <canvas id="grafico_temperatura"></canvas>
-               
+            <div class="alinhamento" onclick="limparSessao()">
+
+                <a class="botoes-diferentes" id="sair"> Sair</a>
 
             </div>
 
         </div>
 
     </div>
+
+    <!-- Fim do menu lateral-->
+
+    <div id="box">
+    
+        <!-- Início Alertas-->
+
+        <div class="dash">
+
+            <div id="alerta"></div>
+
+            <!-- Início regua temperatura -->
+
+            <h1> Temperatura</h1>
+
+            <div class="regua-temp">
+
+
+                <div class="item-regua perigo-frio">
+                    <h4>Perigo</h4>
+                    <h2> <=12°C </h2>
+                </div>
+                <div class="item-regua alerta-frio">
+                    <h4>Alerta</h4>
+                    <h2> <=22.5°C</h2>
+                </div>
+                <div class="item-regua ideal">
+                    <h4>Ideal</h4>
+                    <h2>34.5°C</h2>
+                </div>
+
+                <div class="item-regua alerta-quente">
+                    <h4>Alerta</h4>
+                    <h2>>=38°C</h2>
+                </div>
+                <div class="item-regua perigo-quente">
+                    <h4>Perigo</h4>
+                    <h2>>=40°C</h2>
+                </div>
+            </div>
+
+            <!-- Fim Regua Temperatura -->
+
+            <!-- Início Regua Umidade -->
+
+            <h1 id="h1-umidade"> Umidade</h1>
+
+            <div class="regua-umidade">
+
+
+                <div class="item-regua perigo-frio">
+                    <h4>Perigo</h4>
+                    <h2> <=20% </h2>
+                </div>
+                <div class="item-regua alerta-frio">
+                    <h4>Alerta</h4>
+                    <h2> <=50%</h2>
+                </div>
+                <div class="item-regua ideal">
+                    <h4>Ideal</h4>
+                    <h2>67.5%</h2>
+                </div>
+
+                <div class="item-regua alerta-quente">
+                    <h4>Alerta</h4>
+                    <h2>>=75%</h2>
+                </div>
+                <div class="item-regua perigo-quente">
+                    <h4>Perigo</h4>
+                    <h2>>=80%</h2>
+                </div>
+            </div>
+
+            <!-- Fim Regua Umidade -->
+
+        </div>
+
+        <!-- Fim Alertas-->
+
+
+        <!-- Início Cards -->
+
+        <div class="cards">
+            <div class="card">
+                <h1>Apiário 1</h1>
+                <div class="temp-umi">
+                    <p id="temp_aquario_1">-°C</p>
+                    <p id="umi_aquario_1">%</p>
+                </div>
+                <div class="cor-alerta" id="card_1"></div>
+            </div>
+            <div class="card">
+                <h1>Apiário 2</h1>
+                <div class="temp-umi">
+                    <p id="temp_aquario_2">-°C</p>
+                    <p id="umi_aquario_2">%</p>
+                </div>
+                <div class="cor-alerta" id="card_2"></div>
+
+            </div>
+            <div class="card">
+                <h1>Apiário 3</h1>
+                <div class="temp-umi">
+                    <p id="temp_aquario_3">-°C</p>
+                    <p id="umi_aquario_3">%</p>
+                </div>
+                <div class="cor-alerta" id="card_3"></div>
+            </div>
+            <div class="card">
+                <h1>Apiário 4</h1>
+                <div class="temp-umi">
+                    <p id="temp_aquario_4">-°C</p>
+                    <p id="umi_aquario_4">%</p>
+                </div>
+                <div class="cor-alerta" id="card_4"></div>
+            </div>
+
+        </div>
+
+        <!-- Fim Cards -->
+
+    </div>
+
+
 
 </body>
 
-</html>
-
 <script>
 
-        /* -- dht11Umidade -- */
-        var contextoDht11Umidade = document.getElementById('grafico_umidade').getContext('2d');
-        var dht11Umidade = new Chart(
-            contextoDht11Umidade,
-            {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Umidade',
-                        type: 'line',
-                        borderColor: ['#45b3e7'],
-                        backgroundColor: ['#89cff0']
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Umidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
-                }
-            }
-        );
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
 
-        /* -- dht11Temperatura -- */
-        var contextoDht11Temperatura = document.getElementById('grafico_temperatura').getContext('2d');
-        var dht11Temperatura = new Chart(
-            contextoDht11Temperatura,
-            {   
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: "Temperatura",
-                        type: 'line',
-                        borderColor: ['#ff3232'],
-                        backgroundColor: ['#ff7f7f']
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Luminosidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
-                }
-            }
-        );
+        setTimeout(atualizacaoPeriodica, 5000);
+    } 
 
 
 
-</script>
+</script> 
+
+</html>
