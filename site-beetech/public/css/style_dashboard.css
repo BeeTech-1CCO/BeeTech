@@ -1,0 +1,64 @@
+
+.btns-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .graph {
+    width: 80%;
+    margin: auto;
+    padding-top: 10px;
+  }
+  
+  .tituloGraficos {
+    color: #ffffffd4;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn-chart {
+    border: 0;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: #e6005a;
+    background-color: white;
+    margin: 5px;
+    border-radius: 3px;
+  }
+  
+  .btn-yellow {
+    color: black;
+    background-color:#F0BF3A;
+    border:1px solid black;
+  }
+  
+  .btn-black {
+    color:#F0BF3A;
+    background-color: black;
+    border: 1px solid white;
+  
+  }
+  
+  .label-captura {
+    height: 80px;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
+  .display-flex {
+    display: flex;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }

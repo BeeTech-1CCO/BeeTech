@@ -1,0 +1,152 @@
+#box{
+  height: 150%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #212124;
+  border-left: 3px solid black;
+}
+
+
+/* Início Configurações gerais das reguas */
+
+.dash h1{  
+  margin-top: 10px;
+  color: #F0BF3A;
+  
+}
+
+.dash #h1-umidade{
+  margin-top: 40px;
+  
+}
+
+.item-regua {
+  padding: 5px;
+  width: 15%;
+  height: 80%;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+  border-radius: 5px;
+} 
+
+/* Fim da configração geral das reguas */
+
+/* Início regua de temperatura*/
+
+.regua-temp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+
+.perigo-frio {
+  background-color: #0026ffd5;
+}
+
+
+.alerta-frio {
+  background-color: #42a4f5db;
+}
+
+.ideal {
+  background-color: #a3f941ce;
+}
+
+.alerta-quente {
+  background-color: #f8e323d0;
+}
+
+.perigo-quente {
+  background-color: #ff4343cc;
+}
+
+/* Fim Regua de temperatura */
+
+
+/* Início regua umidade */
+
+.regua-umidade {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.perigo-frio {
+  background-color: #0026ffd5;
+}
+
+
+.alerta-frio {
+  background-color: #42a4f5db;
+}
+
+.ideal {
+  background-color: #a3f941ce;
+}
+
+.alerta-quente {
+  background-color: #f8e323d0;
+}
+
+.perigo-quente {
+  background-color: #ff4343cc;
+}
+
+/* Fim regua umidade */
+
+/* Início Cards */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 450px;
+  width: 100%;
+  align-items: center;
+  color: white;
+}
+
+.card {
+  margin: 2%;
+  width: 40%;
+  flex-wrap: wrap;
+  display: flex;  
+  text-align: center;
+  height: 180px;
+  justify-content: right;
+  background-color: #00000075;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 40px;
+  font-weight: lighter;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.cards h1 {
+  font-size: 20px;
+  width: 100%;
+  border-bottom: solid white 1px;
+  text-align: left;
+  font-weight: lighter;
+  margin: 20px;
+}
+
+.temp-umi {
+  display: flex;
+  margin: 5px;
+  width: 75%;
+}
+

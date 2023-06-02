@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body,
+html {
+    background-color: #ffffffd4;
+    height: 100%;
+    width: 100%;
+    font-family: 'Inria Sans';
+    display: flex;
+    
+}
+
+/* Início Menu Lateral */
+
+#menu-lateral {
+    background-color: #ffffffd4;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+
+}
+
+#menu-lateral #titulo {
+    margin-bottom: 50px;
+
+}
+
+#menu-lateral span {
+    color: #F0BF3A;
+
+}
+
+
+#menu-lateral #user {
+    font-size: 30px;
+    margin-bottom: 40px;
+
+}
+
+#menu-lateral #botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-lateral a {
+    font-size: 20px;
+    height: 40px;
+    width: 80px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #F0BF3A;
+    border: 3px solid black;
+
+}
+
+.alinhamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
+    width: 100%;
+
+}
+
+#menu-lateral a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: bottom;
+    text-decoration: none;
+    color: black;
+
+}
+
+#menu-lateral .botoes-diferentes {
+    background-color: black;
+    color: #F0BF3A;
+    border-radius: 3px;
+    border-radius: 10px;    
+
+
+}
+
+#menu-lateral #sair {
+    border-radius: 0px;
+    margin-top: 30px;
+    border-radius: 30px;
+
+
+}
+
+/* Fim Menu lateral */
+
+/* Início uso geral */
+
+.dash {
+    width: 100%;
+    height: 100%;
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    background-color: #212124;
+  } 
+
+  /* Fim uso geral */
