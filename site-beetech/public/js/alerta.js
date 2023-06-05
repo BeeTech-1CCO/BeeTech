@@ -128,16 +128,16 @@ function alertar(resposta, idSensor) {
     }
 
     if (idSensor == 1) {
-        temp_aquario_1.innerHTML = umid + "%";
+        temp_aquario_1.innerHTML += umid + "%";
         card = card_1
     } else if (idSensor == 2) {
-        temp_aquario_2.innerHTML = umid + "%";
+        temp_aquario_2.innerHTML += umid + "%";
         card = card_2
     } else if (idSensor == 3) {
-        temp_aquario_3.innerHTML = umid + "%";
+        temp_aquario_3.innerHTML += umid + "%";
         card = card_3
     } else if (idSensor == 4) {
-        temp_aquario_4.innerHTML = umid + "%";
+        temp_aquario_4.innerHTML += umid + "%";
         card = card_4
     }
 
@@ -148,7 +148,7 @@ function exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor) {
     var indice = alertas.findIndex(item => item.idSensor == idSensor);
 
     if (indice >= 0) {
-        alertas[indice] = { idSensor, temp, umid, grauDeAviso, grauDeAvisoCor }
+        alertas[indice] = {idSensor, temp, umid, grauDeAviso, grauDeAvisoCor }
     } else {
         alertas.push({ idSensor, temp, umid, grauDeAviso, grauDeAvisoCor });
     }
