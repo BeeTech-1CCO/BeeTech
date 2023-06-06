@@ -1,118 +1,88 @@
 CREATE DATABASE BeeTech;
 USE BeeTech;
 
+-- Criação das tabelas
+    
 CREATE TABLE Empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    nomeEmpresa VARCHAR(45),
-    cnpj CHAR(18),
+	nomeEmpresa VARCHAR(45),
     emailEmpresa VARCHAR(45),
-    telefoneEmpresa VARCHAR(45)
-	);
-
-CREATE TABLE Representante (
-	idRepresentante INT PRIMARY KEY AUTO_INCREMENT,
-    nomeRepresentante VARCHAR(45),
-    fkEmpresa INT,
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
-	);
-
-CREATE TABLE Usuario (
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    nome_user VARCHAR(45),
-    email VARCHAR(45),
-    senha VARCHAR(45),
-    fkEmpresa INT,
-	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
-	);
-
-CREATE TABLE Endereco (
-	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    rua VARCHAR(45),
-    numero INT,
-    bairro VARCHAR(45),
-    cidade VARCHAR(45),
+    telefoneEmpresa CHAR(11),
+    cnpj CHAR(18),
+    nameRepresentante VARCHAR(50),
+	cidade VARCHAR(45),
     cep CHAR(9),
-    fkEmpresa INT,
-	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
+	bairro VARCHAR(45),
+    rua VARCHAR(45),
+	numero INT,
+    senha VARCHAR(45)
 	);
 
 CREATE TABLE LocalSensor (
-	idLocal INT PRIMARY KEY AUTO_INCREMENT,
+	idLocal INT,
     nomeLocal VARCHAR(45),
 	fkEmpresa INT,
-	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
+	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
+    PRIMARY KEY (idLocal, fkEmpresa)
 	);
 
 CREATE TABLE Sensor (
-	idSensor INT PRIMARY KEY AUTO_INCREMENT,
+	idSensor INT,
     tipo VARCHAR(45),
 	fkEmpresa INT,
-	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
+    fkLocal INT,
+	FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
+    FOREIGN KEY (fkLocal) REFERENCES LocalSensor(idLocal),
+    PRIMARY KEY (idSensor, fkEmpresa, fkLocal)
 	);
 
 CREATE TABLE Registro (
-	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+	idRegistro INT,
     dataHora DATETIME,
     temperatura INT,
     umidade INT,
 	fkSensor INT,
-	FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
+    fkLocal INT,
+    fkEmpresa INT,
+	FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor),
+    FOREIGN KEY (fkLocal) REFERENCES LocalSensor(idLocal),
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    PRIMARY KEY (idRegistro, dataHora, fkSensor, fkLocal, fkEmpresa)
 	);
+  
+-- Inserindo os primeiros dados manualmente
+
+INSERT INTO Empresa (idEmpresa, nomeEmpresa, emailEmpresa, telefoneEmpresa, cnpj, nameRepresentante, cidade, cep, bairro, rua, numero, senha) VALUES (NULL,'AgroPiario', 'AgroPiario@email.com', '1234-5678', '39.195.673/0001-80', 'Jonas Silva', 'São Paulo', '08928-833', 'Rio Pequeno', 'João Millam', 45, '123456'),
+						   (NULL,'Piario', 'Piario@email.com', '1564-2278', '71.607.220/0001-26', 'Pedro Augustino', 'São João', '08928-834', 'Panama', 'América', 59, '183457'),
+                           (NULL,'BeeSmart', 'BEE.SMART@gmail.com', '1324-5566', '80.188.316/0001-98', 'Marisa de Almeida', 'Diadema', '08928-835', 'João pequeno', 'Pedro Alvares', 67, '183457'),
+                           (NULL,'Abelhas Brasil', 'abelhas.brasil@gmail.com', '1231-5658', '50.688.122/0001-90', 'Roberto Silva', 'Rio Pequeno', '08928-836', 'vale doce', 'Augusto Cury', 80, '18345735#$'),
+                           (NULL, 'BeeHoney', 'Honey.bee@gmail.com', '1874-5476', '84.281.654/0001-20', 'Kassandra Gimenez', 'Lapa', '18948-895', 'Carioca', 'Morro do Samba', 100, '182145');
     
-INSERT INTO Empresa VALUES (null,'AgroPiario','39.195.673/0001-80','agro.piario@gmail.com','1234-5678'),
-						   (null,'Piario','71.607.220/0001-26','piario@gmail.com','1564-2278'),
-                           (null,'BeeSmart','80.188.316/0001-98','BEE.SMART@gmail.com','1324-5566'),
-                           (null,'Abelhas Brasil','50.688.122/0001-90','abelhas.brasil@gmail.com','1231-5658'),
-                           (null,'BeeHoney','84.281.654/0001-20','honey.bee@gmail.com','1874-5476');
-                           
 SELECT * FROM Empresa;
-                           
-INSERT INTO Representante (nomeRepresentante, fkEmpresa) VALUES ("Pedro Augustino", 1),
-("Jonas Silva", 1),
-("Marisa de Almeida", 2),
-("Roberto Silva", 3),
-("Carlos Alberto de Santos", 4),
-("Kassandra Gimenez", 5);
 
-SELECT * FROM Representante;
-
-INSERT INTO Usuario (idUsuario, nome_user, email, senha, fkEmpresa)
-VALUES(NULL, 'Pedro Augustino', 'AugostinoPedro@gmail.com', '123456', 1),
-(NULL, "Jonas Silva", 'joana@gmail.com', '123456',1),
-(NULL, "Marisa de Almeida", 'marisaAlmeida@gmail.com', '123456', 2),
-(NULL, "Roberto Silva", 'bertosilva@gmail.com', '123456',3),
-(NULL, "Carlos Alberto de Santos", 'AlbertoCarlos@gmail.com', '123456', 4),
-(NULL, "Kassandra Gimenez", 'kassandraGimenez@gmail.com', '123456',5);
-
-SELECT * FROM Usuario;
-
-INSERT INTO Endereco VALUES
-	(NULL, 'João Millam', '45', 'Rio Pequeno', 'São Paulo', '08928-833', 1),
-	(NULL, 'América', '59', 'São João', 'Paraná', '08928-834', 2),
-	(NULL, 'Pedro Alvares', '67', 'João pequeno', 'Diadema', '08928-835', 3),
-	(NULL, 'Diogo de Azevedo', '234', 'Rio Pequeno', 'Paraná', '08928-836', 4),
-	(NULL, 'João da Silva', '143', 'Flamengo', 'Rio de Janeiro', '08928-837', 5);
     
-INSERT INTO LocalSensor VALUES(NULL, 'Fazenda da Juta',1),
-						      (NULL, 'Vale do sol', 2),
-                              (NULL, 'Prrodução 6', 1),
-                              (NULL, 'Fazenda arco-irpis', 3),
-                              (NULL, 'Doce Mel', 4),
-                              (NULL, 'Happy bee', 5);
-SELECT * FROM LocalSensor;
+INSERT INTO LocalSensor VALUES(10, 'Fazenda da Juta', 1),
+						      (11, 'Vale do sol', 2),
+                              (12, 'Prrodução 6', 1),
+                              (13, 'Fazenda arco-irpis', 3),
+                              (14, 'Doce Mel', 4),
+                              (15, 'Happy bee', 5);
                               
-INSERT into Sensor values (null,'dht11',1),
-						  (null,'dht11',2),
-                          (null,'dht11',3),
-                          (null,'dht11',4),
-                          (null,'dht11',5);
+SELECT * FROM LocalSensor;
+
+                              
+INSERT INTO Sensor(idSensor, tipo, fkEmpresa, fkLocal) values (20,'dht11',1, 13),
+															  (21,'dht11', 2, 10),
+															  (22,'dht11',3, 12),
+															  (23,'dht11',4, 14),
+															  (24,'dht11',5, 15);
 SELECT * FROM Sensor;
+
                           
-INSERT INTO Registro VALUES
-	(NULL, '2023-05-02', 30, 54, 1),
-	(NULL, '2023-02-15', 28, 78, 2),
-	(NULL, '2023-03-22', 33, 46, 3),
-	(NULL, '2023-11-12', 34, 65, 4),
-	(NULL, '2023-04-17', 25, 60, 5);
+INSERT INTO Registro(idRegistro, dataHora, temperatura, umidade, fkSensor, fkLocal, fkEmpresa) VALUES(30, '2023-05-02', 30, 54, 20, 10, 1),
+																									 (31, '2023-02-15', 28, 78, 22, 13, 2),
+																									 (32, '2023-03-22', 33, 46, 23, 11, 5),
+	                                                                                                 (33, '2023-11-12', 34, 65, 24, 15, 2),
+	                                                                                                 (34, '2023-04-17', 25, 60, 21, 12, 3);
     
 SELECT * FROM Registro;

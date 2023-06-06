@@ -128,16 +128,16 @@ function alertar(resposta, idSensor) {
     }
 
     if (idSensor == 1) {
-        temp_aquario_1.innerHTML += umid + "%";
+        umi_aquario_1.innerHTML = umid + "%";
         card = card_1
     } else if (idSensor == 2) {
-        temp_aquario_2.innerHTML += umid + "%";
+        umi_aquario_2.innerHTML = umid + "%";
         card = card_2
     } else if (idSensor == 3) {
-        temp_aquario_3.innerHTML += umid + "%";
+        umi_aquario_3.innerHTML = umid + "%";
         card = card_3
     } else if (idSensor == 4) {
-        temp_aquario_4.innerHTML += umid + "%";
+        umi_aquario_4.innerHTML = umid + "%";
         card = card_4
     }
 

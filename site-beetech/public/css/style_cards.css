@@ -131,8 +131,9 @@
   margin: 0;
   font-size: 40px;
   font-weight: lighter;
-  text-align: left;
-  margin-left: 100px;
+  text-align: center;
+ 
+  
 }
 
 .cards h1 {
@@ -146,7 +147,10 @@
 
 .temp-umi {
   display: flex;
-  margin: 5px;
-  width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 5px; 
+  width: 100%;
+  
 }
 
