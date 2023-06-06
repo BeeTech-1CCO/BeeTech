@@ -181,6 +181,11 @@ b {
     width: 30px;
     height: 30px;
 }
+#imgHelpDesk{
+    width: 60px;
+    height: 60px;
+    margin-left: 25px;
+}
 #house, #email, #insta {
     align-items: center;
     display: flex;
