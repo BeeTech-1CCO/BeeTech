@@ -34,10 +34,10 @@
             <div id="cardErro"></div>
             <h1>REGISTRO DE CONTA</h1> <br>
             <div class="linhas">
-                <div class="campos">
+                <!--<div class="campos">
                     <h2>Nome de usuário:</h2>
                     <input id="ipt_nome_usuario" type="text">
-                </div>
+                </div>-->
                 <div class="campos">
                     <h2>Email de contato:</h2>
                     <input id="ipt_email" type="email">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="campos">
                     <h2>CNPJ:</h2>
-                    <input id="ipt_cnpj" maxlength="14">
+                    <input id="ipt_cnpj" maxlength="18">
                 </div>
                 <div class="campos">
                     <h2>Representante da empresa:</h2>
@@ -147,8 +147,7 @@
 
     function entrar() {
         var verificacao = true;
-        var cnpjVar = (ipt_cnpj.value).length != 14;
-        var nomeVar = ipt_nome_usuario.value;
+        var cnpjVar = ipt_cnpj.value;
         var emailVar = ipt_email.value;
         var telefoneVar = ipt_telefone.value;
         var nome_empresaVar = ipt_nome_empresa.value;
@@ -161,23 +160,16 @@
         var senhaVar = ipt_senha.value;
         var confirmacaoSenhaVar = ipt_conf_senha.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
 
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 800)
+            setInterval(sumirMensagem, 5000)
         }
 
-        if ((nomeVar).length < 5) {
-            verificacao = false
-            alert("Nome de usuário deve ter pelo menos 5 caracteres")
-            ipt_nome_usuario.style = 'border: 2px solid red;'
-        } else {
-            ipt_nome_usuario.style = 'border: 2px solid black;'
-        }
 
         if (emailVar == '') {
             verificacao = false
@@ -203,17 +195,17 @@
             ipt_nome_empresa.style = 'border: 2px solid black;'
         }
 
-        if (cnpjVar) {
+        if ((cnpjVar).length != 18) {
             verificacao = false
-            alert("O CNPJ deve ter 14 dígitos")
+            alert("O CNPJ deve ter 18 dígitos")
             ipt_cnpj.style = 'border: 2px solid red;'
         } else {
             ipt_cnpj.style = 'border: 2px solid black;'
         }
 
-        if ((representanteVar).length < 5) {
+        if ((representanteVar).length < 3) {
             verificacao = false
-            alert("O nome do representante deve ter no mínimo 5 caracteres")
+            alert("O nome do representante deve ter no mínimo 3 caracteres")
             ipt_representante.style = 'border: 2px solid red;'
         } else {
             ipt_representante.style = 'border: 2px solid black;'
@@ -284,12 +276,11 @@
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nomeVar,
                     emailServer: emailVar,
                     telefoneServer: telefoneVar,
                     nome_empresaServer: nome_empresaVar,
                     cnpjServer: cnpjVar,
-                    representanteSever: representanteVar,
+                    representanteServer: representanteVar,
                     cidadeServer: cidadeVar,
                     cepServer: cepVar,
                     bairroServer: bairroVar,
