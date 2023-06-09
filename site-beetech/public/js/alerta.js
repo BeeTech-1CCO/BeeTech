@@ -35,17 +35,18 @@ function alertar(resposta, idSensor) {
         muito_quente: 40,
         quente: 38,
         ideal: 34,
-        frio: 23,
+        frio: 22.5,
         muito_frio: 12
     };
 
-    var limitesU = {
-        muito_quente: 80,
-        quente: 70,
-        ideal: 60,
-        frio: 50,
-        muito_frio: 40
+    var limites_umidade = {
+        muito_alta: 80,
+        alta: 75,
+        ideal_umi: 67.5,
+        baixa: 50,
+        muito_baixa: 20
     };
+
 
     var classe_temperatura = 'cor-alerta';
 
@@ -53,111 +54,201 @@ function alertar(resposta, idSensor) {
 
     if (temp >= limites.muito_quente) {
         classe_temperatura = 'cor-alerta perigo-quente';
-        grauDeAviso = 'perigo quente'
-        grauDeAvisoCor = 'cor-alerta perigo-quente'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp < limites.muito_quente && temp >= limites.quente) {
-        classe_temperatura = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
-        grauDeAvisoCor = 'cor-alerta alerta-quente'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp < limites.quente && temp > limites.frio) {
-        classe_temperatura = 'cor-alerta ideal';
-        removerAlerta(idSensor);
-    }
-    else if (temp <= limites.frio && temp > limites.muito_frio) {
-        classe_temperatura = 'cor-alerta alerta-frio';
-        grauDeAviso = 'alerta frio'
-        grauDeAvisoCor = 'cor-alerta alerta-frio'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp <= limites.muito_frio) {
-        classe_temperatura = 'cor-alerta perigo-frio';
-        grauDeAviso = 'perigo frio'
-        grauDeAvisoCor = 'cor-alerta perigo-frio'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
+        grauDeAviso = 'perigo muito quente';
+        grauDeAvisoCor = 'cor-alerta perigo-quente';
 
-    // Umidade
+        if (umid >= limites_umidade.muito_alta) {
+            classe_umidade = 'cor-alerta perigo-alta';
+            grauDeAviso_umidade = 'perigo alta';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-alta';
+            exibirAlerta(temp, umid, idSensor, grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid < limites_umidade.muito_alta && umid >= limites_umidade.alta) {
+            classe_umidade = 'cor-alerta alerta-alta';
+            grauDeAviso_umidade = 'alerta alta';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-alta';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor,grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid <= limites_umidade.alta && umid >= limites_umidade.baixa) {
+            classe_umidade = 'cor-alerta ideal_umi';
+            removerAlerta(idSensor);
+        }
+        else if (umid <= limites_umidade.baixa && umid > limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta alerta-baixa';
+            grauDeAviso_umidade = 'alerta baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid <= limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta perigo-baixa';
+            grauDeAviso_umidade = 'perigo baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else{}
 
-    if (umid >= limitesU.muito_quente) {
-        classe_temperatura = 'cor-alerta perigo-quente';
-        grauDeAviso = 'perigo quente'
-        grauDeAvisoCor = 'cor-alerta perigo-quente'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (umid < limitesU.muito_quente && umid >= limitesU.quente) {
+    }else if (temp < limites.muito_quente && temp >= limites.quente) {
         classe_temperatura = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
-        grauDeAvisoCor = 'cor-alerta alerta-quente'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (umid < limitesU.quente && umid > limitesU.frio) {
+        grauDeAviso = 'alerta quente';
+        grauDeAvisoCor = 'cor-alerta alerta-quente';
+        
+        if (umid >= limites_umidade.muito_alta) {
+            classe_umidade = 'cor-alerta perigo-alta';
+            grauDeAviso_umidade = 'perigo alta';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-alta';
+            exibirAlerta(temp, umid, idSensor, grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid < limites_umidade.muito_alta && umid >= limites_umidade.alta) {
+            classe_umidade = 'cor-alerta alerta-alta';
+            grauDeAviso_umidade = 'alerta alta';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-alta';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor,grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid < limites_umidade.alta && umid > limites_umidade.baixa) {
+            classe_umidade = 'cor-alerta ideal_umi';
+            removerAlerta(idSensor);
+        }
+        else if (umid <= limites_umidade.baixa && umid > limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta alerta-baixa';
+            grauDeAviso_umidade = 'alerta baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid <= limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta perigo-baixa';
+            grauDeAviso_umidade = 'perigo baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else{}
+
+    }else if (temp < limites.quente && temp > limites.frio) {
         classe_temperatura = 'cor-alerta ideal';
-        removerAlerta(idSensor);
-    }
-    else if (umid <= limitesU.frio && umid > limitesU.muito_frio) {
+        grauDeAviso = 'ideal'
+        grauDeAvisoCor_umidade = 'ideal';
+        if (umid >= limites_umidade.muito_alta) {
+            classe_umidade = 'cor-alerta perigo-alta';
+            grauDeAviso_umidade = 'perigo alta';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-alta';
+            exibirAlerta(temp, umid, idSensor, grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid < limites_umidade.muito_alta && umid >= limites_umidade.alta) {
+            classe_umidade = 'cor-alerta alerta-alta';
+            grauDeAviso_umidade = 'alerta alta';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-alta';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor,grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid < limites_umidade.alta && umid > limites_umidade.baixa) {
+            classe_umidade = 'cor-alerta ideal_umi';
+            removerAlerta(idSensor);
+        }
+        else if (umid <= limites_umidade.baixa && umid > limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta alerta-baixa';
+            grauDeAviso_umidade = 'alerta baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }
+        else if (umid <= limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta perigo-baixa';
+            grauDeAviso_umidade = 'perigo baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else{}
+
+    }else if (temp <= limites.frio && temp > limites.muito_frio) {
         classe_temperatura = 'cor-alerta alerta-frio';
-        grauDeAviso = 'alerta frio'
-        grauDeAvisoCor = 'cor-alerta alerta-frio'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (umid <= limitesU.muito_frio) {
+        grauDeAviso = 'alerta frio';
+        grauDeAvisoCor = 'cor-alerta alerta-frio';
+        if (umid >= limites_umidade.muito_alta) {
+            classe_umidade = 'cor-alerta perigo-alta';
+            grauDeAviso_umidade = 'perigo alta';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-alta';
+            exibirAlerta(temp, umid, idSensor, grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        } else if (umid < limites_umidade.muito_alta && umid >= limites_umidade.alta) {
+            classe_umidade = 'cor-alerta alerta-alta';
+            grauDeAviso_umidade = 'alerta alta';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-alta';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor,grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else if (umid < limites_umidade.alta && umid > limites_umidade.baixa) {
+            classe_umidade = 'cor-alerta ideal_umi';
+            removerAlerta(idSensor);
+        }else if (umid <= limites_umidade.baixa && umid > limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta alerta-baixa';
+            grauDeAviso_umidade = 'alerta baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else if (umid <= limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta perigo-baixa';
+            grauDeAviso_umidade = 'perigo baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else{}
+    }else if (temp <= limites.muito_frio) {
         classe_temperatura = 'cor-alerta perigo-frio';
-        grauDeAviso = 'perigo frio'
-        grauDeAvisoCor = 'cor-alerta perigo-frio'
-        exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor)
-    }
+        grauDeAviso = 'perigo muito frio';
+        grauDeAvisoCor = 'cor-alerta perigo-frio';
+        if (umid >= limites_umidade.muito_alta) {
+            classe_umidade = 'cor-alerta perigo-alta';
+            grauDeAviso_umidade = 'perigo alta';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-alta';
+            exibirAlerta(temp, umid, idSensor, grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else if (umid < limites_umidade.muito_alta && umid >= limites_umidade.alta) {
+            classe_umidade = 'cor-alerta alerta-alta';
+            grauDeAviso_umidade = 'alerta alta';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-alta';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor,grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else if (umid < limites_umidade.alta && umid > limites_umidade.baixa) {
+            classe_umidade = 'cor-alerta ideal_umi';
+            removerAlerta(idSensor);
+        }else if (umid <= limites_umidade.baixa && umid > limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta alerta-baixa';
+            grauDeAviso_umidade = 'alerta baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta alerta-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso,grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else if (umid <= limites_umidade.muito_baixa) {
+            classe_umidade = 'cor-alerta perigo-baixa';
+            grauDeAviso_umidade = 'perigo baixa';
+            grauDeAvisoCor_umidade = 'cor-alerta perigo-baixa';
+            exibirAlerta(temp, umid, idSensor,grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade)
+        }else{}
+    }else{}
 
     var card;
-
     if (idSensor == 1) {
         temp_aquario_1.innerHTML = temp + "°C";
-        card = card_1
+        umi_aquario_1.innerHTML = umid + "%";
+        
     } else if (idSensor == 2) {
         temp_aquario_2.innerHTML = temp + "°C";
-        card = card_2
+        umi_aquario_2.innerHTML = umid + "%";
+      
     } else if (idSensor == 3) {
         temp_aquario_3.innerHTML = temp + "°C";
-        card = card_3
+        umi_aquario_3.innerHTML = umid + "%";
+        
     } else if (idSensor == 4) {
         temp_aquario_4.innerHTML = temp + "°C";
-        card = card_4
-    }
-
-    if (idSensor == 1) {
-        umi_aquario_1.innerHTML = umid + "%";
-        card = card_1
-    } else if (idSensor == 2) {
-        umi_aquario_2.innerHTML = umid + "%";
-        card = card_2
-    } else if (idSensor == 3) {
-        umi_aquario_3.innerHTML = umid + "%";
-        card = card_3
-    } else if (idSensor == 4) {
         umi_aquario_4.innerHTML = umid + "%";
-        card = card_4
-    }
-
-    card.className = classe_temperatura;
+        
+    }else{}
+     
+    exibirCards();
+    
 }
 
-function exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor) {
+function exibirAlerta(temp, umid, idSensor, grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade, grauDeAvisoCor_umidade) {
     var indice = alertas.findIndex(item => item.idSensor == idSensor);
-
+    
     if (indice >= 0) {
-        alertas[indice] = {idSensor, temp, umid, grauDeAviso, grauDeAvisoCor }
+        alertas[indice] = {idSensor, temp, umid, grauDeAviso, grauDeAvisoCor, grauDeAviso_umidade,grauDeAvisoCor_umidade }
     } else {
-        alertas.push({ idSensor, temp, umid, grauDeAviso, grauDeAvisoCor });
-    }
+        alertas.push({ idSensor, temp, umid, grauDeAviso, grauDeAvisoCor,grauDeAviso_umidade,grauDeAvisoCor_umidade });
 
-    exibirCards();
+
+    }
+}
     
 // Dentro da div com classe grauDeAvisoCor há um caractere "invisível", 
 // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
-}
+
 
 function removerAlerta(idSensor) {
     alertas = alertas.filter(item => item.idSensor != idSensor);
@@ -173,13 +264,11 @@ function exibirCards() {
     }
 }
 
-function transformarEmDiv({ idSensor, temp, umid, grauDeAviso, grauDeAvisoCor }) {
+function transformarEmDiv({ idSensor, temp, umid, grauDeAviso, grauDeAvisoCor}) {
     return `<div class="mensagem-alarme">
     <div class="informacao">
-    <div class="${grauDeAvisoCor}">&#12644;</div> 
-     <h3>Apiário ${idSensor} está em estado de ${grauDeAviso}!</h3>
+    <h3>Apiário ${idSensor} está com temperatura em estado de '${grauDeAviso}' e umidade em '${grauDeAviso_umidade}'!</h3>
     <small>Temperatura ${temp}°C / Umidade ${umid}%.</small>
     </div>
-    <div class="alarme-sino"></div>
     </div>`;
 }

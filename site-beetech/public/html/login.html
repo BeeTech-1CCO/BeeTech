@@ -38,11 +38,11 @@
             <div id="alinhamento">
                 <div class="label">
                     <h2>Seu email Cadastrado:</h2>
-                    <input type="text" id="email_input">
+                    <input type="text" id="email_input" value="ApiáriosBrasil@gmail.com">
                 </div>
                 <div class="label">
                     <h2>Senha:</h2>
-                    <input type="password" id="senha_input">
+                    <input type="password" id="senha_input" value="123456">
                 </div>
             </div>
             <button id="enviar" class="bttLink" onclick="entrar()">ENTRAR</button>
@@ -149,9 +149,9 @@
                 console.log(resposta);
 
                 resposta.json().then(json => {
-                    console.log(json);
+                    
                     console.log(JSON.stringify(json));
-
+                    console.log(json.email);
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
